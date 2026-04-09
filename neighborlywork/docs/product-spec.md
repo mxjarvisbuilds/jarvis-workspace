@@ -99,13 +99,36 @@ A two-sided marketplace where homeowners post jobs and local workers complete th
 ---
 
 ## Revenue Model
+
+### Tiered platform fee (charged to homeowner)
+| Job Value | Platform Fee |
+|-----------|-------------|
+| $0 – $500 | 15% |
+| $501 – $2,000 | 10% |
+| $2,001 – $5,000 | 7% |
+| $5,000+ | 5% |
+
+### Worker-side fees
 | Source | Rate |
 |--------|------|
-| Service fee (poster) | 15% of job value |
-| Processing fee (worker) | 5% of payout |
-| Featured listing (optional) | $9.99/month |
+| Processing fee (standard) | 3% of payout |
+| Pro subscription | $49/month — fee capped at 3% regardless of volume |
 | Background check badge | $19.99 one-time |
-| Pro subscription (workers) | $29.99/month for priority placement |
+| Featured profile | $9.99/month |
+
+### Pro subscription value prop
+- High-volume workers save money vs per-job fees
+- Priority placement in job matching
+- "Pro" badge on profile
+- At ~$1,500/month in jobs, the sub pays for itself
+
+### Example earnings
+| Job | Value | Platform fee | Worker gets |
+|-----|-------|-------------|-------------|
+| Cleaning | $150 | $22 | $128 |
+| Plumbing repair | $600 | $60 | $540 |
+| HVAC install | $3,500 | $245 | $3,255 |
+| Roof replacement | $9,000 | $450 | $8,550 |
 
 ---
 
