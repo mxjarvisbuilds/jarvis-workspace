@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Request HVAC Quotes - Sacramento HVAC Quotes</title>
+    <meta name="description" content="Request HVAC quotes in Sacramento in under 2 minutes." />
+    <style>
+      body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:860px;margin:40px auto;line-height:1.65;padding:0 16px;background:#f4f9fc;color:#102030}
+      .card{background:#fff;border:1px solid #d8e5f0;border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(16,32,48,.06)}
+      h1{margin-top:0;font-size:clamp(2rem,4vw,3rem)}
+      .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+      .box{border:1px solid #e3edf5;border-radius:14px;padding:16px;background:#fcfeff}
+      input,select,textarea{width:100%;padding:13px 14px;border:1px solid #cfdce8;border-radius:12px;font:inherit;box-sizing:border-box}
+      textarea{min-height:120px;resize:vertical}
+      .stack{display:grid;gap:12px;margin-top:18px}
+      a{color:#1565c0;text-decoration:none}
+      .cta{display:inline-block;background:#1565c0;color:#fff;padding:13px 18px;border-radius:12px;font-weight:700}
+      .muted{color:#5b7083}
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <h1>Request HVAC quotes</h1>
+      <p class="muted">Homeowners in Sacramento and nearby areas can request up to 3 contractor quotes.</p>
+      <div class="grid">
+        <div class="box"><strong>Fast</strong><p>Quick quote request.</p></div>
+        <div class="box"><strong>Local</strong><p>Sacramento-area contractors.</p></div>
+        <div class="box"><strong>Simple</strong><p>No phone tree, no spam.</p></div>
+      </div>
+      <form class="stack">
+        <input placeholder="Name" />
+        <div class="grid">
+          <input placeholder="Phone" />
+          <input placeholder="Email" />
+        </div>
+        <div class="grid">
+          <select>
+            <option>Need type</option>
+            <option>Repair</option>
+            <option>Replacement</option>
+            <option>Installation</option>
+            <option>Maintenance</option>
+          </select>
+          <input placeholder="Zip code" />
+        </div>
+        <input placeholder="Address or neighborhood" />
+        <input placeholder="Best time to contact" />
+        <textarea placeholder="Describe the issue, system age, urgency, and anything the contractor should know."></textarea>
+        <a class="cta" href="mailto:mxjarvis.builds@gmail.com?subject=HVAC%20Quote%20Request">Send request</a>
+      </form>
+      <p class="muted"><a href="index.html">Back to home</a></p>
+    </div>
+  </body>
+</html>

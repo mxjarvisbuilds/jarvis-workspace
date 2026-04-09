@@ -3,65 +3,107 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Jarvis Builds</title>
-    <meta name="description" content="Jarvis Builds, AI business partner and automation services for lead generation, inbox support, research, and business workflows." />
+    <title>Sacramento HVAC Quotes</title>
+    <meta name="description" content="Get up to 3 HVAC quotes from Sacramento area contractors. Fast, simple, free for homeowners." />
     <style>
-      :root { --bg:#0b0f14; --card:#111823; --text:#e8eef6; --muted:#9fb0c3; --accent:#7cc4ff; }
-      body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: linear-gradient(180deg,#0b0f14,#0f1620); color:var(--text); }
-      .wrap { max-width: 900px; margin: 0 auto; padding: 72px 24px; }
-      .card { background: rgba(17,24,35,.92); border: 1px solid rgba(124,196,255,.12); border-radius: 20px; padding: 36px; box-shadow: 0 16px 50px rgba(0,0,0,.25); }
-      h1 { font-size: clamp(2.4rem, 6vw, 4.8rem); margin: 0 0 12px; }
-      .tag { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: .8rem; font-weight: 700; }
-      p { color: var(--muted); line-height: 1.65; font-size: 1.06rem; }
-      ul { color: var(--muted); line-height: 1.7; }
-      .grid { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap: 16px; margin-top: 24px; }
-      .box { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; padding: 18px; }
-      a { color: var(--accent); text-decoration: none; }
-      footer { margin-top: 28px; color: #7f91a7; font-size: .95rem; }
-      .small { font-size: .92rem; }
+      :root { --bg:#07111a; --card:#0d1a26; --text:#eef5fb; --muted:#9fb5c7; --accent:#58c7ff; --accent2:#7dffb2; }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: linear-gradient(180deg,#061019,#0a1622); color:var(--text); }
+      .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 20px 64px; }
+      .nav { display:flex; justify-content:space-between; align-items:center; gap:16px; padding: 10px 0 30px; }
+      .brand { font-weight: 800; letter-spacing: .02em; }
+      .nav a { color: var(--muted); text-decoration:none; margin-left: 14px; }
+      .hero { display:grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items:stretch; }
+      .panel { background: rgba(13,26,38,.92); border:1px solid rgba(88,199,255,.12); border-radius: 22px; padding: 34px; box-shadow: 0 18px 50px rgba(0,0,0,.25); }
+      .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 800; }
+      h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: .95; margin: 12px 0 14px; }
+      p { color: var(--muted); line-height: 1.65; font-size: 1.04rem; }
+      .cta { display:inline-block; margin-top: 18px; padding: 14px 18px; border-radius: 14px; background: linear-gradient(90deg,var(--accent),#7aa8ff); color:#061019; font-weight: 800; text-decoration:none; }
+      .secondary { display:inline-block; margin-left: 12px; color: var(--text); text-decoration:none; border:1px solid rgba(255,255,255,.12); padding: 14px 18px; border-radius: 14px; }
+      .list { margin: 18px 0 0; padding-left: 18px; color: var(--muted); line-height:1.8; }
+      .form { display:grid; gap: 12px; }
+      input, select, textarea { width:100%; padding: 14px 14px; border-radius: 12px; border:1px solid rgba(255,255,255,.12); background:#08131d; color:var(--text); }
+      textarea { min-height: 110px; resize: vertical; }
+      .grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 22px; }
+      .card { background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius: 18px; padding: 18px; }
+      .muted { color: var(--muted); }
+      .section { margin-top: 22px; }
+      .footer { margin-top: 30px; display:flex; justify-content:space-between; gap:16px; color:#7f93a7; font-size:.95rem; flex-wrap:wrap; }
+      .small { font-size:.95rem; }
+      .split { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .pill { display:inline-block; padding: 7px 11px; border-radius:999px; background: rgba(125,255,178,.12); color: var(--accent2); font-size:.82rem; font-weight:700; }
+      @media (max-width: 900px){ .hero, .grid, .split { grid-template-columns: 1fr; } .nav { flex-direction:column; align-items:flex-start; } }
     </style>
   </head>
   <body>
     <div class="wrap">
-      <div class="card">
-        <div class="tag">Jarvis Builds</div>
-        <h1>AI business partner for growth.</h1>
-        <p>I help founders and small businesses find leads, automate repetitive work, monitor inboxes, and build simple systems that save time and make money.</p>
-        <div class="grid">
-          <div class="box">
-            <strong>Lead generation</strong>
-            <p class="small">Find prospects, research them, and draft outreach.</p>
-          </div>
-          <div class="box">
-            <strong>Automation</strong>
-            <p class="small">Turn repetitive business tasks into reliable workflows.</p>
-          </div>
-          <div class="box">
-            <strong>Inbox support</strong>
-            <p class="small">Monitor email, surface priorities, and draft replies.</p>
-          </div>
-          <div class="box">
-            <strong>Research</strong>
-            <p class="small">Competitive teardowns, niche research, and opportunity scouting.</p>
-          </div>
+      <div class="nav">
+        <div class="brand">Sacramento HVAC Quotes</div>
+        <div>
+          <a href="#how">How it works</a>
+          <a href="contractors.html">For contractors</a>
+          <a href="#request">Get quotes</a>
+          <a href="mailto:mxjarvis.builds@gmail.com">Contact</a>
         </div>
-        <div class="grid">
-          <div class="box">
-            <strong>Contact</strong>
-            <p class="small"><a href="mailto:mxjarvis.builds@gmail.com">mxjarvis.builds@gmail.com</a></p>
-          </div>
-          <div class="box">
-            <strong>Business</strong>
-            <p class="small">Jarvis Builds</p>
-          </div>
-          <div class="box">
-            <strong>Services</strong>
-            <p class="small">Lead gen, business automation, research, inbox workflows, and future home-improvement lead systems.</p>
-          </div>
+      </div>
+
+      <div class="hero">
+        <div class="panel">
+          <div class="eyebrow">Sacramento area</div>
+          <h1>Compare HVAC quotes without calling 10 companies.</h1>
+          <p>Tell us what you need, and we connect you with up to 3 local HVAC contractors. Fast quotes for repairs, installs, and replacements.</p>
+          <a class="cta" href="#request">Get quotes</a>
+          <a class="secondary" href="contractors.html">I’m a contractor</a>
+          <ul class="list">
+            <li>Free for homeowners</li>
+            <li>Sacramento, Elk Grove, Roseville, Folsom, Citrus Heights</li>
+            <li>Repairs, installs, tune-ups, and replacements</li>
+          </ul>
         </div>
-        <footer>
-          Privacy and terms pages can be added once the site is live.
-        </footer>
+
+        <div class="panel" id="request">
+          <div class="eyebrow">Request a quote</div>
+          <div class="section form">
+            <input placeholder="Name" />
+            <div class="split">
+              <input placeholder="Phone" />
+              <input placeholder="Email" />
+            </div>
+            <select>
+              <option>What do you need?</option>
+              <option>Repair</option>
+              <option>Replacement</option>
+              <option>Installation</option>
+              <option>Maintenance</option>
+            </select>
+            <div class="split">
+              <input placeholder="Zip code" />
+              <input placeholder="Best time to contact" />
+            </div>
+            <textarea placeholder="Describe the issue, your system age, and any urgency."></textarea>
+            <a class="cta" href="mailto:mxjarvis.builds@gmail.com?subject=New%20HVAC%20Lead">Submit request</a>
+          </div>
+          <p class="small muted">This is a simple launch page. We’ll wire the intake to a real form and contractor workflow next.</p>
+          <p class="small muted">Contractors can learn more on the dedicated partner page.</p>
+        </div>
+      </div>
+
+      <div class="grid section" id="how">
+        <div class="card"><strong>1. Submit request</strong><p class="muted">Homeowner sends basic job details.</p></div>
+        <div class="card"><strong>2. Match contractors</strong><p class="muted">We route to qualified Sacramento HVAC companies.</p></div>
+        <div class="card"><strong>3. Compare quotes</strong><p class="muted">Homeowner picks the best option.</p></div>
+      </div>
+
+      <div class="grid section" id="contractors">
+        <div class="card"><span class="pill">For contractors</span><p class="muted">Pay per lead or per booked estimate.</p></div>
+        <div class="card"><strong>Target market</strong><p class="muted">Sacramento and nearby suburbs.</p></div>
+        <div class="card"><strong>Contact</strong><p class="muted"><a href="mailto:mxjarvis.builds@gmail.com">mxjarvis.builds@gmail.com</a></p></div>
+      </div>
+
+      <div class="footer">
+        <div>Jarvis Builds</div>
+        <div><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
       </div>
     </div>
   </body>
