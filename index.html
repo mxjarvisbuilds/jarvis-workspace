@@ -3,146 +3,299 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NeighborlyWork — Get local jobs done.</title>
-    <meta name="description" content="Post a job or find work in your neighborhood. NeighborlyWork connects homeowners with trusted local workers for any home service." />
+    <title>NeighborlyWork</title>
+    <meta name="description" content="Post a job. Get it done. Pay when it's complete." />
     <style>
-      :root{--bg:#0a0f1a;--card:#111827;--text:#f1f5fb;--muted:#8fa3bb;--accent:#4ade80;--accent2:#60a5fa;--border:rgba(255,255,255,.08)}
-      *{box-sizing:border-box;margin:0;padding:0}
-      html{scroll-behavior:smooth}
-      body{font-family:Inter,system-ui,sans-serif;background:var(--bg);color:var(--text);min-height:100vh}
-      .wrap{max-width:1120px;margin:0 auto;padding:0 20px}
-      nav{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px solid var(--border)}
-      .brand{font-size:1.25rem;font-weight:800;letter-spacing:-.02em}
-      .brand span{color:var(--accent)}
-      .nav-links a{color:var(--muted);text-decoration:none;margin-left:24px;font-size:.95rem}
-      .nav-links a:hover{color:var(--text)}
-      .btn{display:inline-block;padding:11px 20px;border-radius:10px;font-weight:700;text-decoration:none;font-size:.95rem;cursor:pointer;border:none}
-      .btn-primary{background:var(--accent);color:#050d0a}
-      .btn-secondary{background:var(--accent2);color:#040b14}
-      .btn-outline{border:1px solid var(--border);color:var(--text);background:transparent}
-      .hero{padding:80px 0 60px;text-align:center}
-      .eyebrow{display:inline-block;padding:6px 14px;border-radius:999px;background:rgba(74,222,128,.1);color:var(--accent);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
-      h1{font-size:clamp(2.8rem,6vw,5rem);line-height:1;font-weight:900;margin-bottom:20px;letter-spacing:-.03em}
-      h1 span{color:var(--accent)}
-      .sub{color:var(--muted);font-size:1.15rem;max-width:580px;margin:0 auto 36px;line-height:1.6}
-      .cta-row{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-      .split{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:60px 0}
-      .card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:32px}
-      .card-icon{font-size:2.5rem;margin-bottom:16px}
-      .card h2{font-size:1.5rem;margin-bottom:10px}
-      .card p{color:var(--muted);line-height:1.65}
-      .steps{counter-reset:step;display:grid;gap:16px;margin-top:20px}
-      .step{display:flex;gap:14px;align-items:flex-start}
-      .step-num{background:var(--accent);color:#050d0a;border-radius:999px;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;flex-shrink:0;margin-top:2px}
-      .step-num.blue{background:var(--accent2);color:#040b14}
-      .step-text strong{display:block;margin-bottom:4px}
-      .step-text span{color:var(--muted);font-size:.93rem}
-      .categories{margin:60px 0}
-      .categories h2{text-align:center;font-size:2rem;margin-bottom:8px}
-      .categories p{text-align:center;color:var(--muted);margin-bottom:32px}
-      .cat-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
-      .cat{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px 14px;text-align:center;cursor:pointer}
-      .cat-icon{font-size:2rem;margin-bottom:8px}
-      .cat-label{font-size:.88rem;font-weight:600;color:var(--muted)}
-      .trust{display:flex;gap:32px;justify-content:center;flex-wrap:wrap;margin:48px 0;padding:32px;background:var(--card);border-radius:20px;border:1px solid var(--border)}
-      .trust-item{text-align:center}
-      .trust-num{font-size:2rem;font-weight:900;color:var(--accent)}
-      .trust-label{color:var(--muted);font-size:.88rem;margin-top:4px}
-      .signup{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin:60px 0}
-      .signup-card{border-radius:20px;padding:36px}
-      .signup-poster{background:linear-gradient(135deg,#0d2a1a,#0a1f30);border:1px solid rgba(74,222,128,.2)}
-      .signup-worker{background:linear-gradient(135deg,#0d1a2a,#0a0f1a);border:1px solid rgba(96,165,250,.2)}
-      .signup-card h3{font-size:1.6rem;margin-bottom:10px}
-      .signup-card p{color:var(--muted);margin-bottom:24px;line-height:1.6}
-      .form-group{display:grid;gap:10px;margin-bottom:16px}
-      input,select{width:100%;padding:12px 14px;border-radius:10px;border:1px solid var(--border);background:#0d1520;color:var(--text);font:inherit}
-      input::placeholder{color:var(--muted)}
-      footer{border-top:1px solid var(--border);padding:32px 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:gap;color:var(--muted);font-size:.9rem}
-      footer a{color:var(--muted);text-decoration:none;margin-left:16px}
-      @media(max-width:768px){.split,.signup{grid-template-columns:1fr}.nav-links{display:none}.trust{gap:20px}}
+      * { box-sizing: border-box; margin: 0; padding: 0; }
+      html { scroll-behavior: smooth; }
+      body {
+        font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+        background: #f5f5f7;
+        color: #1d1d1f;
+        min-height: 100vh;
+      }
+
+      /* NAV */
+      nav {
+        background: rgba(255,255,255,.85);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid rgba(0,0,0,.08);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        padding: 0 24px;
+      }
+      .nav-inner {
+        max-width: 1000px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 52px;
+      }
+      .brand { font-size: 1.05rem; font-weight: 700; color: #1d1d1f; letter-spacing: -.01em; }
+      .brand span { color: #34c759; }
+      nav a { color: #6e6e73; text-decoration: none; font-size: .9rem; margin-left: 24px; }
+      nav a:hover { color: #1d1d1f; }
+      .nav-cta {
+        background: #34c759;
+        color: #fff;
+        padding: 8px 16px;
+        border-radius: 8px;
+        font-size: .88rem;
+        font-weight: 600;
+        text-decoration: none;
+        margin-left: 24px;
+      }
+
+      /* HERO */
+      .hero {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 80px 24px 60px;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: clamp(2.4rem, 5vw, 3.8rem);
+        font-weight: 800;
+        letter-spacing: -.03em;
+        line-height: 1.05;
+        margin-bottom: 16px;
+        color: #1d1d1f;
+      }
+      .hero h1 span { color: #34c759; }
+      .hero p {
+        font-size: 1.1rem;
+        color: #6e6e73;
+        max-width: 500px;
+        margin: 0 auto 36px;
+        line-height: 1.55;
+      }
+      .hero-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 13px 22px;
+        border-radius: 12px;
+        font-size: .95rem;
+        font-weight: 600;
+        text-decoration: none;
+        transition: opacity .15s;
+      }
+      .btn:hover { opacity: .85; }
+      .btn-green { background: #34c759; color: #fff; }
+      .btn-blue { background: #0071e3; color: #fff; }
+      .btn-ghost { background: #fff; color: #1d1d1f; border: 1px solid rgba(0,0,0,.12); }
+
+      /* CARDS SECTION */
+      .section { max-width: 1000px; margin: 0 auto; padding: 0 24px 60px; }
+      .section-label {
+        text-align: center;
+        font-size: .78rem;
+        font-weight: 700;
+        letter-spacing: .1em;
+        text-transform: uppercase;
+        color: #6e6e73;
+        margin-bottom: 12px;
+      }
+      .section-title {
+        text-align: center;
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -.02em;
+        margin-bottom: 32px;
+      }
+
+      .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+
+      .card {
+        background: #fff;
+        border-radius: 18px;
+        padding: 32px;
+        border: 1px solid rgba(0,0,0,.06);
+        box-shadow: 0 2px 12px rgba(0,0,0,.04);
+      }
+      .card-icon { font-size: 2.2rem; margin-bottom: 14px; }
+      .card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 8px; }
+      .card p { color: #6e6e73; font-size: .95rem; line-height: 1.55; margin-bottom: 20px; }
+
+      .steps { display: grid; gap: 12px; }
+      .step { display: flex; gap: 12px; align-items: flex-start; }
+      .dot {
+        width: 24px; height: 24px;
+        border-radius: 999px;
+        display: flex; align-items: center; justify-content: center;
+        font-size: .75rem; font-weight: 800;
+        flex-shrink: 0; margin-top: 1px;
+      }
+      .dot-green { background: #34c759; color: #fff; }
+      .dot-blue { background: #0071e3; color: #fff; }
+      .step-body strong { font-size: .95rem; display: block; margin-bottom: 2px; }
+      .step-body span { font-size: .88rem; color: #6e6e73; }
+
+      /* CATEGORIES */
+      .cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 10px; }
+      .cat {
+        background: #fff;
+        border: 1px solid rgba(0,0,0,.06);
+        border-radius: 14px;
+        padding: 18px 10px;
+        text-align: center;
+        cursor: pointer;
+        transition: box-shadow .15s;
+      }
+      .cat:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+      .cat-icon { font-size: 1.8rem; margin-bottom: 6px; }
+      .cat-name { font-size: .82rem; font-weight: 600; color: #6e6e73; }
+
+      /* SIGNUP */
+      .signup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+      .signup-card { background: #fff; border-radius: 18px; padding: 32px; border: 1px solid rgba(0,0,0,.06); box-shadow: 0 2px 12px rgba(0,0,0,.04); }
+      .signup-card h3 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
+      .signup-card .sub { font-size: .9rem; color: #6e6e73; margin-bottom: 22px; }
+      .form-stack { display: grid; gap: 10px; margin-bottom: 16px; }
+      input, select {
+        width: 100%;
+        padding: 11px 14px;
+        border-radius: 10px;
+        border: 1px solid rgba(0,0,0,.12);
+        background: #f5f5f7;
+        font: inherit;
+        font-size: .93rem;
+        color: #1d1d1f;
+        outline: none;
+      }
+      input:focus, select:focus { border-color: #0071e3; background: #fff; }
+
+      /* TRUST BAR */
+      .trust-bar {
+        background: #fff;
+        border-radius: 18px;
+        border: 1px solid rgba(0,0,0,.06);
+        display: flex;
+        justify-content: space-around;
+        padding: 28px;
+        margin-bottom: 60px;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+      .trust-item { text-align: center; }
+      .trust-num { font-size: 1.8rem; font-weight: 800; color: #34c759; }
+      .trust-label { font-size: .82rem; color: #6e6e73; margin-top: 4px; }
+
+      footer {
+        border-top: 1px solid rgba(0,0,0,.08);
+        padding: 28px 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1000px;
+        margin: 0 auto;
+        color: #6e6e73;
+        font-size: .85rem;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      footer a { color: #6e6e73; text-decoration: none; margin-left: 16px; }
+      footer a:hover { color: #1d1d1f; }
+
+      @media(max-width: 700px) {
+        .two-col, .signup-grid { grid-template-columns: 1fr; }
+        nav a:not(.nav-cta) { display: none; }
+      }
     </style>
   </head>
   <body>
-    <div class="wrap">
-      <nav>
+
+    <nav>
+      <div class="nav-inner">
         <div class="brand">Neighborly<span>Work</span></div>
-        <div class="nav-links">
-          <a href="#how-it-works">How it works</a>
-          <a href="#categories">Services</a>
-          <a href="#for-workers">Find work</a>
+        <div>
+          <a href="#how">How it works</a>
+          <a href="#services">Services</a>
           <a href="#signup">Sign up</a>
-        </div>
-        <a class="btn btn-primary" href="#signup">Get started</a>
-      </nav>
-
-      <div class="hero">
-        <div class="eyebrow">Local home services marketplace</div>
-        <h1>Get any home job done.<br><span>Pay only when it's complete.</span></h1>
-        <p class="sub">Post a job, get matched with a trusted local worker, and only pay when you're satisfied. Escrow-protected, rated, and reliable.</p>
-        <div class="cta-row">
-          <a class="btn btn-primary" href="#signup">Post a job — it's free</a>
-          <a class="btn btn-secondary" href="#for-workers">Find work near me</a>
+          <a class="nav-cta" href="#signup">Get started</a>
         </div>
       </div>
+    </nav>
 
-      <div class="trust">
-        <div class="trust-item"><div class="trust-num">$0</div><div class="trust-label">Upfront for workers</div></div>
-        <div class="trust-item"><div class="trust-num">100%</div><div class="trust-label">Escrow protected</div></div>
-        <div class="trust-item"><div class="trust-num">24h</div><div class="trust-label">Auto-release if no dispute</div></div>
-        <div class="trust-item"><div class="trust-num">⭐ 5.0</div><div class="trust-label">Verified ratings</div></div>
+    <div class="hero">
+      <h1>Get any home job done.<br><span>Pay when it's complete.</span></h1>
+      <p>Post a job, get matched with a trusted local worker. Payment is held safely until you confirm — no risk, no hassle.</p>
+      <div class="hero-btns">
+        <a class="btn btn-green" href="#signup">🏠 Post a job</a>
+        <a class="btn btn-blue" href="#signup">🔧 Find work near me</a>
       </div>
+    </div>
 
-      <div class="split" id="how-it-works">
+    <div class="section">
+      <div class="trust-bar">
+        <div class="trust-item"><div class="trust-num">Free</div><div class="trust-label">To post a job</div></div>
+        <div class="trust-item"><div class="trust-num">Safe</div><div class="trust-label">Escrow protected</div></div>
+        <div class="trust-item"><div class="trust-num">Fast</div><div class="trust-label">Paid in 24 hours</div></div>
+        <div class="trust-item"><div class="trust-num">Local</div><div class="trust-label">Workers near you</div></div>
+      </div>
+    </div>
+
+    <div class="section" id="how">
+      <div class="section-label">How it works</div>
+      <div class="section-title">Simple for everyone</div>
+      <div class="two-col">
         <div class="card">
           <div class="card-icon">🏠</div>
-          <h2>For homeowners</h2>
-          <p>Post any home job and get it done by a trusted local worker. Payment held safely until you confirm the work is complete.</p>
+          <h3>For homeowners</h3>
+          <p>Post your job for free. We match you with a local worker. You only pay when the job is done and you're happy.</p>
           <div class="steps">
-            <div class="step"><div class="step-num">1</div><div class="step-text"><strong>Post your job</strong><span>Describe what you need, set your budget, pick a timeline.</span></div></div>
-            <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Get matched</strong><span>A qualified local worker accepts your job.</span></div></div>
-            <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Pay on completion</strong><span>Funds release only when you confirm the job is done.</span></div></div>
+            <div class="step"><div class="dot dot-green">1</div><div class="step-body"><strong>Post your job</strong><span>Describe what you need and set your budget.</span></div></div>
+            <div class="step"><div class="dot dot-green">2</div><div class="step-body"><strong>A worker accepts</strong><span>Local, qualified, and rated by past customers.</span></div></div>
+            <div class="step"><div class="dot dot-green">3</div><div class="step-body"><strong>Confirm and pay</strong><span>Payment only releases when you're satisfied.</span></div></div>
           </div>
         </div>
-        <div class="card" id="for-workers">
+        <div class="card">
           <div class="card-icon">🔧</div>
-          <h2>For workers</h2>
-          <p>Browse local jobs, pick what you want, get paid fast. No cold calls, no chasing clients. Just work and get paid.</p>
+          <h3>For workers</h3>
+          <p>Browse jobs in your area, pick what fits your schedule, and get paid automatically within 24 hours of completing the job.</p>
           <div class="steps">
-            <div class="step"><div class="step-num blue">1</div><div class="step-text"><strong>Browse jobs near you</strong><span>Filter by category, distance, and pay.</span></div></div>
-            <div class="step"><div class="step-num blue">2</div><div class="step-text"><strong>Accept and complete</strong><span>Chat with the homeowner, show up, get it done.</span></div></div>
-            <div class="step"><div class="step-num blue">3</div><div class="step-text"><strong>Get paid automatically</strong><span>Payment releases within 24 hours of completion.</span></div></div>
+            <div class="step"><div class="dot dot-blue">1</div><div class="step-body"><strong>Browse local jobs</strong><span>Filter by trade, distance, and pay.</span></div></div>
+            <div class="step"><div class="dot dot-blue">2</div><div class="step-body"><strong>Accept and complete</strong><span>Chat with the homeowner, show up, get it done.</span></div></div>
+            <div class="step"><div class="dot dot-blue">3</div><div class="step-body"><strong>Get paid fast</strong><span>Automatic payment within 24 hours. No chasing.</span></div></div>
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="categories" id="categories">
-        <h2>Every home service, one platform</h2>
-        <p>Starting in Sacramento — expanding nationwide</p>
-        <div class="cat-grid">
-          <div class="cat"><div class="cat-icon">❄️</div><div class="cat-label">HVAC</div></div>
-          <div class="cat"><div class="cat-icon">🔧</div><div class="cat-label">Plumbing</div></div>
-          <div class="cat"><div class="cat-icon">⚡</div><div class="cat-label">Electrical</div></div>
-          <div class="cat"><div class="cat-icon">🌿</div><div class="cat-label">Landscaping</div></div>
-          <div class="cat"><div class="cat-icon">🏊</div><div class="cat-label">Pool Service</div></div>
-          <div class="cat"><div class="cat-icon">🏠</div><div class="cat-label">Roofing</div></div>
-          <div class="cat"><div class="cat-icon">🪟</div><div class="cat-label">Windows</div></div>
-          <div class="cat"><div class="cat-icon">🧹</div><div class="cat-label">Cleaning</div></div>
-          <div class="cat"><div class="cat-icon">🔨</div><div class="cat-label">Handyman</div></div>
-          <div class="cat"><div class="cat-icon">🎨</div><div class="cat-label">Painting</div></div>
-        </div>
+    <div class="section" id="services">
+      <div class="section-label">Services</div>
+      <div class="section-title">Every home service, one place</div>
+      <div class="cats">
+        <div class="cat"><div class="cat-icon">❄️</div><div class="cat-name">HVAC</div></div>
+        <div class="cat"><div class="cat-icon">🔧</div><div class="cat-name">Plumbing</div></div>
+        <div class="cat"><div class="cat-icon">⚡</div><div class="cat-name">Electrical</div></div>
+        <div class="cat"><div class="cat-icon">🌿</div><div class="cat-name">Landscaping</div></div>
+        <div class="cat"><div class="cat-icon">🏊</div><div class="cat-name">Pool Service</div></div>
+        <div class="cat"><div class="cat-icon">🏠</div><div class="cat-name">Roofing</div></div>
+        <div class="cat"><div class="cat-icon">🪟</div><div class="cat-name">Windows</div></div>
+        <div class="cat"><div class="cat-icon">🧹</div><div class="cat-name">Cleaning</div></div>
+        <div class="cat"><div class="cat-icon">🔨</div><div class="cat-name">Handyman</div></div>
+        <div class="cat"><div class="cat-icon">🎨</div><div class="cat-name">Painting</div></div>
       </div>
+    </div>
 
-      <div class="signup" id="signup">
-        <div class="signup-card signup-poster">
-          <h3>🏠 Post a job</h3>
-          <p>Free to post. Pay only when the job is done and you're happy.</p>
-          <div class="form-group">
+    <div class="section" id="signup">
+      <div class="section-label">Get started</div>
+      <div class="section-title">Join NeighborlyWork today</div>
+      <div class="signup-grid">
+        <div class="signup-card">
+          <h3>🏠 I need work done</h3>
+          <div class="sub">Free to post. Pay only when you're satisfied.</div>
+          <div class="form-stack">
             <input placeholder="Your name" />
             <input type="email" placeholder="Email address" />
-            <input type="tel" placeholder="Phone number" />
             <input placeholder="Zip code" />
             <select>
-              <option value="">What do you need done?</option>
+              <option value="">What do you need?</option>
               <option>HVAC repair or install</option>
               <option>Plumbing</option>
               <option>Electrical</option>
@@ -155,19 +308,17 @@
               <option>Other</option>
             </select>
           </div>
-          <a class="btn btn-primary" href="mailto:mxjarvis.builds@gmail.com?subject=New%20Job%20Post%20-%20NeighborlyWork" style="display:block;text-align:center">Post my job →</a>
+          <a class="btn btn-green" href="mailto:mxjarvis.builds@gmail.com?subject=Post%20a%20Job%20-%20NeighborlyWork" style="display:block;text-align:center;width:100%">Post my job →</a>
         </div>
-
-        <div class="signup-card signup-worker">
-          <h3>🔧 Find work</h3>
-          <p>Browse local jobs, get paid fast. No monthly fees to browse. Commission only when you earn.</p>
-          <div class="form-group">
+        <div class="signup-card">
+          <h3>🔧 I want to find work</h3>
+          <div class="sub">Free to join. We only take a cut when you earn.</div>
+          <div class="form-stack">
             <input placeholder="Your name" />
             <input type="email" placeholder="Email address" />
-            <input type="tel" placeholder="Phone number" />
             <input placeholder="Zip code / service area" />
             <select>
-              <option value="">Your trade / specialty</option>
+              <option value="">Your trade</option>
               <option>HVAC</option>
               <option>Plumbing</option>
               <option>Electrical</option>
@@ -180,18 +331,19 @@
               <option>Multiple trades</option>
             </select>
           </div>
-          <a class="btn btn-secondary" href="mailto:mxjarvis.builds@gmail.com?subject=Worker%20Signup%20-%20NeighborlyWork" style="display:block;text-align:center">Sign up as a worker →</a>
+          <a class="btn btn-blue" href="mailto:mxjarvis.builds@gmail.com?subject=Worker%20Signup%20-%20NeighborlyWork" style="display:block;text-align:center;width:100%">Sign up as a worker →</a>
         </div>
       </div>
-
-      <footer>
-        <div>© 2026 NeighborlyWork. All rights reserved.</div>
-        <div>
-          <a href="privacy.html">Privacy</a>
-          <a href="terms.html">Terms</a>
-          <a href="mailto:mxjarvis.builds@gmail.com">Contact</a>
-        </div>
-      </footer>
     </div>
+
+    <footer>
+      <div>© 2026 NeighborlyWork</div>
+      <div>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:mxjarvis.builds@gmail.com">Contact</a>
+      </div>
+    </footer>
+
   </body>
 </html>
