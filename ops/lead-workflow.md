@@ -34,12 +34,12 @@ On email receipt:
 
 ---
 
-## Lead Pricing
-| Type | Price |
+## Lead Pricing (performance-based — pay only on closed jobs)
+| Job Type | Fee |
 |------|-------|
-| Shared lead (up to 3) | $25 |
-| Exclusive lead | $45 |
-| Zip code monthly lock | $399/mo |
+| Closed repair job | $75 |
+| Closed install or replacement | $200 |
+| Zip code monthly lock (optional) | $299/mo |
 
 ---
 

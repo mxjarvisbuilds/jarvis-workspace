@@ -21,12 +21,12 @@ We're signing on our first contractor partners this month. Here's how it works:
 - We qualify them (real contact info, real job, real service area)
 - You receive the lead by email or SMS within 24 hours
 
-**Pricing:**
-- Shared lead (up to 3 contractors): $25
-- Exclusive lead (only you): $45
-- Zip code monthly lock: $399/month
+**Pricing — you only pay when you close the job:**
+- Closed repair job: $75
+- Closed install or replacement: $200
+- Zip code monthly lock (optional): $299/month
 
-No subscription to start. You buy leads as they come in.
+No upfront cost. No risk. You pay us only after you get paid.
 
 If you're interested in getting leads in [their service area], reply to this email or call [phone].
 
