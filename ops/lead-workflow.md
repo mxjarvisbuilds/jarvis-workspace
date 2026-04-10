@@ -1,30 +1,38 @@
-# Lead Workflow - Sacramento HVAC Quotes
+# Lead Workflow - NeighborlyWork Sacramento Leads
 
 ## Overview
-This is the internal ops workflow for receiving homeowner requests, qualifying them, and distributing them to contractors.
+This is the internal ops workflow for receiving homeowner requests, qualifying them, and routing them into either Community Jobs or Pro Installs.
 
 ---
 
 ## Step 1: Homeowner submits request
-- Via lead-form.html (email to mxjarvis.builds@gmail.com)
-- Email subject: "HVAC Quote Request"
+- Via homepage lead forms
+- Community Jobs or Pro Installs path selected
+- Data captured into lead intake sheet / email / form tool
 
 ## Step 2: Jarvis receives and qualifies
-On email receipt:
-1. Check zip code is in service area (Sacramento, Elk Grove, Roseville, Folsom, Citrus Heights)
-2. Check contact info is valid (name + phone or email)
-3. Check job type is real (repair, replacement, install, maintenance)
+For Community Jobs:
+1. Check zip code is in service area
+2. Check contact info is valid
+3. Check job is small, affordable, and clear
+4. Mark as: QUALIFIED or JUNK
+
+For Pro Installs:
+1. Check zip code is in service area
+2. Check contact info is valid
+3. Check job is a real HVAC / roof / plumbing install or replacement
 4. Mark as: QUALIFIED or JUNK
 
 ## Step 3: Match to contractor
-- Check contractor roster (ops/contractors.csv)
-- Match by: zip code, job type, current availability
-- Assign shared (up to 3) or exclusive (1) based on their plan
+- Community Jobs: match by trade, zip, and price fit
+- Pro Installs: match by zip, trade, and availability
+- Assign shared (up to 3 for Pro Installs) or exclusive (1 for small jobs)
 
 ## Step 4: Send lead to contractor
-- Email with homeowner name, phone, zip, job type, description
-- Subject: "New HVAC Lead - [Job Type] - [Zip]"
-- Include: time to contact, urgency level
+- Community Jobs: email worker with job, price, zip, and contact info
+- Pro Installs: email 3 contractors with homeowner name, phone, zip, job details
+- Subject: "New Lead - [Path] - [Zip]"
+- Include urgency and time to contact
 - Log in ops/leads-log.csv
 
 ## Step 5: Follow up
@@ -34,12 +42,14 @@ On email receipt:
 
 ---
 
-## Lead Pricing (performance-based — pay only on closed jobs)
-| Job Type | Fee |
-|------|-------|
-| Closed repair job | $75 |
-| Closed install or replacement | $200 |
-| Zip code monthly lock (optional) | $299/mo |
+## Revenue Model
+| Path | Fee |
+|------|-----|
+| Community Jobs under $200 | 10% |
+| Community Jobs $200 - $1,000 | 8% |
+| Community Jobs over $1,000 | 5% |
+| Pro Installs closed repair | $75 |
+| Pro Installs closed install / replacement | $350 |
 
 ---
 

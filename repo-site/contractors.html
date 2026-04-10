@@ -1,43 +1,82 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>For Contractors - NeighborlyWork</title>
-    <meta name="description" content="Get Sacramento HVAC leads and booked estimates. Pay per lead or per appointment." />
-    <style>
-      body{font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;max-width:900px;margin:40px auto;line-height:1.7;padding:0 16px;color:#102030;background:#f7fbff}
-      .card{background:#fff;border:1px solid #d8e5f0;border-radius:18px;padding:28px;box-shadow:0 10px 30px rgba(16,32,48,.06)}
-      h1{margin:0 0 8px;font-size:clamp(2rem,4vw,3rem)}
-      h2{margin-top:28px}
-      .pill{display:inline-block;padding:6px 10px;border-radius:999px;background:#e6f6ff;color:#126; font-size:.85rem;font-weight:700}
-      ul{padding-left:20px}
-      a{color:#1565c0;text-decoration:none}
-      .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:18px}
-      .box{border:1px solid #e3edf5;border-radius:14px;padding:16px;background:#fcfeff}
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <span class="pill">Sacramento HVAC lead source</span>
-      <h1>Get qualified HVAC leads in Sacramento.</h1>
-      <p>We send homeowners looking for repair, replacement, installation, or maintenance quotes. <strong>You only pay when you close the job.</strong> No risk, no upfront cost.</p>
-      <div class="grid">
-        <div class="box"><strong>Coverage</strong><p>Sacramento, Elk Grove, Roseville, Folsom, Citrus Heights.</p></div>
-        <div class="box"><strong>Lead type</strong><p>Homeowners who need fast HVAC quotes.</p></div>
-        <div class="box"><strong>Pricing</strong><p>$75 on closed repairs. $200 on closed installs. Only pay when you get paid.</p></div>
-      </div>
-      <h2>Why this works</h2>
-      <ul>
-        <li>Homeowners hate calling multiple contractors.</li>
-        <li>Contractors want booked estimates, not random junk leads.</li>
-        <li>We qualify requests before sending them out.</li>
-      </ul>
-      <h2>Pricing</h2>
-      <p>Pay per lead, per exclusive lead, or lock in a zip code. <a href="pricing.html">See full pricing →</a></p>
-      <h2>Next step</h2>
-      <p>Email <a href="mailto:mxjarvis.builds@gmail.com">mxjarvis.builds@gmail.com</a> to become an early contractor partner.</p>
-      <p><a href="pricing.html">See pricing</a> · <a href="index.html">Back to home</a></p>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For Contractors | NeighborlyWork</title>
+  <meta name="description" content="Join NeighborlyWork to receive qualified HVAC quotes from homeowners in your service area." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
+    :root{--green:#1a5c3a;--green2:#2a7a4f;--orange:#c8401a;--off:#f5f2ec;--char:#141810;--text:#141810;--muted:#5f655f;--line:#e4e1da;--shadow:0 18px 50px rgba(20,24,16,.08);}
+    *{box-sizing:border-box} body{margin:0;font-family:'DM Sans',system-ui,sans-serif;background:var(--off);color:var(--text)} a{text-decoration:none;color:inherit}
+    .nav{position:sticky;top:0;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+    .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+    .nav-inner{min-height:76px;display:flex;align-items:center;justify-content:space-between}
+    .brand{font-family:'Fraunces',serif;font-weight:700;font-size:1.35rem;color:var(--green)}
+    .back{color:var(--muted);font-weight:700}
+    .hero{padding:54px 0 28px}
+    .panel{background:#fff;border:1px solid var(--line);border-radius:28px;padding:34px;box-shadow:var(--shadow)}
+    .eyebrow{color:var(--green);text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;font-weight:800}
+    h1,h2{font-family:'Fraunces',serif;letter-spacing:-.03em;line-height:.98;margin:0}
+    h1{font-size:clamp(2.4rem,5vw,4.2rem);max-width:12ch;margin-top:10px}
+    .sub{color:var(--muted);font-size:1.08rem;max-width:60ch;margin:18px 0 22px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:24px}
+    .box{border:1px solid var(--line);background:var(--off);border-radius:20px;padding:18px}
+    .section{padding:24px 0 70px}
+    .band{background:var(--green);color:#fff;border-radius:28px;padding:30px;box-shadow:var(--shadow)}
+    .band-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+    .band ul{margin:0;padding-left:18px;line-height:1.9}
+    .form{background:#fff;border-radius:22px;padding:20px;color:var(--text)}
+    .field{margin-bottom:12px}
+    label{font-size:.92rem;font-weight:700;color:#283229;display:block;margin-bottom:6px}
+    input{width:100%;padding:14px;border:1px solid var(--line);border-radius:14px;font:inherit}
+    .cta{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:16px;padding:15px 18px;font-weight:800;cursor:pointer;background:var(--orange);color:#fff;width:100%;font-size:1rem}
+    @media(max-width:860px){.grid,.band-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="index.html">NeighborlyWork</a>
+      <a class="back" href="index.html">← Home</a>
     </div>
-  </body>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div class="panel">
+        <div class="eyebrow">For contractors</div>
+        <h1>Get qualified HVAC homeowners, not junk leads.</h1>
+        <p class="sub">Join our network to receive homeowners actively requesting HVAC quotes in your service area. You only pay when you close a job. No monthly fees, no subscriptions.</p>
+        <div class="grid">
+          <div class="box"><strong>Coverage</strong><p>Sacramento, Roseville, Folsom, Elk Grove, Citrus Heights.</p></div>
+          <div class="box"><strong>Lead type</strong><p>Homeowners requesting up to 3 competing HVAC quotes.</p></div>
+          <div class="box"><strong>Pricing</strong><p>$350 flat when you close and install the job.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="band">
+        <div class="band-grid">
+          <div>
+            <h2 style="font-size:clamp(2rem,4vw,3.4rem);margin-bottom:10px">Why contractors join NeighborlyWork</h2>
+            <ul>
+              <li>Free to join, no upfront cost</li>
+              <li>Only pay when you close a job ($350 flat)</li>
+              <li>Leads in your exact service zip codes</li>
+            </ul>
+          </div>
+          <div class="form">
+            <div class="field"><label>Business name</label><input type="text" placeholder="Company name"></div>
+            <div class="field"><label>Your name</label><input type="text" placeholder="Your name"></div>
+            <div class="field"><label>Phone number</label><input type="text" placeholder="(555) 555-5555"></div>
+            <div class="field"><label>City and zip code</label><input type="text" placeholder="Sacramento, 95814"></div>
+            <button class="cta" type="button" onclick="alert('Coming soon — join our waitlist')">Apply to Join</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
 </html>

@@ -1,9 +1,9 @@
 # Contractor Outreach Email Template
 
 ## Subject line options (A/B test)
-- "Get more HVAC leads in Sacramento - no monthly fee"
-- "Sacramento homeowners are requesting HVAC quotes - are you getting them?"
-- "New HVAC lead source for Sacramento contractors"
+- "Sacramento leads for HVAC contractors"
+- "Get blind HVAC quotes in Sacramento"
+- "New Sacramento lead source for contractors"
 
 ---
 
@@ -13,22 +13,21 @@ Subject: Sacramento homeowners are looking for HVAC contractors - are you gettin
 
 Hi [First Name / Company Name],
 
-I run Sacramento HVAC Quotes — a lead matching service connecting homeowners in Sacramento, Elk Grove, Roseville, Folsom, and Citrus Heights with local HVAC contractors.
+I run NeighborlyWork — a Sacramento home services marketplace.
 
-We're signing on our first contractor partners this month. Here's how it works:
+We have two paths:
+- Community Jobs: homeowners name the price, local workers accept
+- Pro Installs: homeowners request HVAC / roofing / plumbing installs and get 3 blind quotes from vetted contractors
 
-- Homeowners submit quote requests through our site
-- We qualify them (real contact info, real job, real service area)
-- You receive the lead by email or SMS within 24 hours
+You only pay when you close the job.
 
-**Pricing — you only pay when you close the job:**
-- Closed repair job: $75
-- Closed install or replacement: $200
-- Zip code monthly lock (optional): $299/month
+**Pricing:**
+- Closed HVAC repair: $75
+- Closed HVAC install / replacement: $350
 
-No upfront cost. No risk. You pay us only after you get paid.
+No monthly fee to start. No upfront cost. No wasted leads.
 
-If you're interested in getting leads in [their service area], reply to this email or call [phone].
+If you're interested in getting HVAC leads in [their service area], reply to this email or call [phone].
 
 — Jarvis Builds
 mxjarvis.builds@gmail.com
@@ -43,7 +42,7 @@ Hi [Name],
 
 Just following up on my last email about HVAC leads in Sacramento.
 
-We currently have homeowners in [zip code area] looking for [job type]. If you want first right of refusal on leads in your area, let me know and I'll set you up.
+We currently have homeowners in [zip code area] looking for HVAC quotes. If you want one of the 3 invited spots on a lead, let me know and I'll set you up.
 
 No commitment needed to start.
 

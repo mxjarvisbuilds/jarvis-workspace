@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updatedAt": "2026-04-09T08:04:05.937Z",
+  "updatedAt": "2026-04-10T04:10:51.739Z",
   "entries": {
     "memory:memory/2026-04-08.md:1:10": {
       "key": "memory:memory/2026-04-08.md:1:10",
@@ -9,15 +9,17 @@
       "endLine": 10,
       "source": "memory",
       "snippet": "# 2026-04-08 - User wants Jarvis to be able to run a business autonomously, with only approval for external actions. - User learned the startup flow: open OpenClaw, start the OpenClaw browser, keep Gmail/Stripe/GitHub/Telegram approvals signed in, and avoid switching profiles or clearing cookies. - For GitHub token use, repo-only permissions were recommended for pushing the site; workflow permissions are unnecessary for the current website push. - GitHub Pages settings kept redirecting to Enterprise signup / unauthenticated state, indicating the repo Pages path is the actual blocker, not the local files. - Ollama was installed successfully on the Mac and Gemma is available locally. - Routin",
-      "recallCount": 2,
+      "recallCount": 3,
       "dailyCount": 0,
-      "totalScore": 1.1662628751609552,
+      "groundedCount": 0,
+      "totalScore": 1.7493943127414329,
       "maxScore": 0.5831314375804776,
       "firstRecalledAt": "2026-04-09T07:53:39.797Z",
-      "lastRecalledAt": "2026-04-09T08:04:05.937Z",
+      "lastRecalledAt": "2026-04-10T04:07:01.477Z",
       "queryHashes": [
         "e4ac34b4fbe4",
-        "c86d2cde72e8"
+        "c86d2cde72e8",
+        "86b2628bc4d3"
       ],
       "recallDays": [
         "2026-04-09"
@@ -31,6 +33,136 @@
         "able",
         "run",
         "business"
+      ]
+    },
+    "memory:memory/2026-04-09.md:1:15": {
+      "key": "memory:memory/2026-04-09.md:1:15",
+      "path": "memory/2026-04-09.md",
+      "startLine": 1,
+      "endLine": 15,
+      "source": "memory",
+      "snippet": "# 2026-04-09 - Zayith explicitly said the Sacramento address `8319 Oliva Road, Roseville, CA 95678` is his address, and asked that it only be shared with permission. - Zayith provided phone number `2799007886` for the Stripe account. - NeighborlyWork direction shifted from broad home-services marketplace emphasis to HVAC lead generation as the main focus. - The Evergreen Leads PDF / business plan became the active model: homeowners submit once, up to 3 vetted HVAC contractors bid blind, homeowner compares quotes side by side, and the contractor pays only when they close the job. - Revenue model should emphasize HVAC lead gen, with closed-job pricing and a simpler, more conversion-focused we",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.8746776524387316,
+      "maxScore": 0.6877007564741177,
+      "firstRecalledAt": "2026-04-10T04:07:08.440Z",
+      "lastRecalledAt": "2026-04-10T04:10:51.739Z",
+      "queryHashes": [
+        "9285ae48b502",
+        "2f7bae1825ee",
+        "050a2fff8967"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "home-services",
+        "closed-job",
+        "conversion-focused",
+        "zayith",
+        "explicitly",
+        "said",
+        "the",
+        "sacramento"
+      ]
+    },
+    "memory:memory/2026-04-09.md:14:20": {
+      "key": "memory:memory/2026-04-09.md:14:20",
+      "path": "memory/2026-04-09.md",
+      "startLine": 14,
+      "endLine": 20,
+      "source": "memory",
+      "snippet": "- The Evergreen Leads PDF / business plan became the active model: homeowners submit once, up to 3 vetted HVAC contractors bid blind, homeowner compares quotes side by side, and the contractor pays only when they close the job. - Revenue model should emphasize HVAC lead gen, with closed-job pricing and a simpler, more conversion-focused website. - Website and outreach assets were updated to match the HVAC blind-bid model, including homepage, pricing, product spec, and contractor outreach copy. - On 2026-04-09, a dedicated NeighborlyWork lead inbox/router page was built at `neighborlywork/lead-inbox.html` to centralize review, qualification, routing, and pipeline tracking for incoming leads.",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.7074032928848522,
+      "maxScore": 0.622712814776125,
+      "firstRecalledAt": "2026-04-10T04:07:08.440Z",
+      "lastRecalledAt": "2026-04-10T04:10:51.739Z",
+      "queryHashes": [
+        "9285ae48b502",
+        "2f7bae1825ee",
+        "050a2fff8967"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "router",
+        "closed-job",
+        "conversion-focused",
+        "blind-bid",
+        "inbox/router",
+        "neighborlywork/lead-inbox.html",
+        "the",
+        "evergreen"
+      ]
+    },
+    "memory:memory/2026-04-08.md:1:15": {
+      "key": "memory:memory/2026-04-08.md:1:15",
+      "path": "memory/2026-04-08.md",
+      "startLine": 1,
+      "endLine": 15,
+      "source": "memory",
+      "snippet": "# 2026-04-08 - User wants Jarvis to be able to run a business autonomously, with only approval for external actions. - User learned the startup flow: open OpenClaw, start the OpenClaw browser, keep Gmail/Stripe/GitHub/Telegram approvals signed in, and avoid switching profiles or clearing cookies. - For GitHub token use, repo-only permissions were recommended for pushing the site; workflow permissions are unnecessary for the current website push. - GitHub Pages settings kept redirecting to Enterprise signup / unauthenticated state, indicating the repo Pages path is the actual blocker, not the local files. - Ollama was installed successfully on the Mac and Gemma is available locally. - Routin",
+      "recallCount": 3,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 1.7013559546455608,
+      "maxScore": 0.6037770556040182,
+      "firstRecalledAt": "2026-04-10T04:07:08.440Z",
+      "lastRecalledAt": "2026-04-10T04:10:51.739Z",
+      "queryHashes": [
+        "9285ae48b502",
+        "e5bebaf31397",
+        "050a2fff8967"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "gmail/stripe/github/telegram",
+        "repo-only",
+        "user",
+        "wants",
+        "jarvis",
+        "able",
+        "run",
+        "business"
+      ]
+    },
+    "memory:memory/2026-04-08.md:11:25": {
+      "key": "memory:memory/2026-04-08.md:11:25",
+      "path": "memory/2026-04-08.md",
+      "startLine": 11,
+      "endLine": 25,
+      "source": "memory",
+      "snippet": "- Pricing evolved to a tiered model for homeowners plus a worker Pro subscription. - The guiding product principle is contractor-first simplicity: remove friction, use plain language, guide one action at a time, and keep the contractor focused on winning work, not learning software. ## Stripe account activated (2026-04-09) - Account: Jarvis Builds / NeighborlyWork - Status: LIVE - Publishable key prefix: pk_live_51TK8bS0RAVRfgrfh... - Business name: NeighborlyWork - Statement descriptor: NEIGHBORLYWORK - Support phone: +1 279 900 7886 - Address: 8319 Oliva Road, Roseville, CA 95678 - Website: https://neighborlywork.com - Gmail SMTP app password saved for autonomous email sending - GoDaddy A",
+      "recallCount": 1,
+      "dailyCount": 0,
+      "groundedCount": 0,
+      "totalScore": 0.5876577751970863,
+      "maxScore": 0.5876577751970863,
+      "firstRecalledAt": "2026-04-10T04:10:51.739Z",
+      "lastRecalledAt": "2026-04-10T04:10:51.739Z",
+      "queryHashes": [
+        "050a2fff8967"
+      ],
+      "recallDays": [
+        "2026-04-09"
+      ],
+      "conceptTags": [
+        "contractor-first",
+        "pk-live-51tk8bs0ravrfgrfh",
+        "neighborlywork.com",
+        "pricing",
+        "evolved",
+        "tiered",
+        "model",
+        "homeowners"
       ]
     }
   }

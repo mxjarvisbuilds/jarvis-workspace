@@ -1,97 +1,292 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NeighborlyWork</title>
-    <meta name="description" content="Get up to 3 HVAC quotes from Sacramento area contractors. Fast, simple, free for homeowners." />
-    <style>
-      :root { --bg:#07111a; --card:#0d1a26; --text:#eef5fb; --muted:#9fb5c7; --accent:#58c7ff; --accent2:#7dffb2; }
-      * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; }
-      body { margin:0; font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, sans-serif; background: linear-gradient(180deg,#061019,#0a1622); color:var(--text); }
-      .wrap { max-width: 1100px; margin: 0 auto; padding: 28px 20px 64px; }
-      .nav { display:flex; justify-content:space-between; align-items:center; gap:16px; padding: 10px 0 30px; }
-      .brand { font-weight: 800; letter-spacing: .02em; }
-      .nav a { color: var(--muted); text-decoration:none; margin-left: 14px; }
-      .hero { display:grid; grid-template-columns: 1.15fr .85fr; gap: 24px; align-items:stretch; }
-      .panel { background: rgba(13,26,38,.92); border:1px solid rgba(88,199,255,.12); border-radius: 22px; padding: 34px; box-shadow: 0 18px 50px rgba(0,0,0,.25); }
-      .eyebrow { color: var(--accent); text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; font-weight: 800; }
-      h1 { font-size: clamp(2.5rem, 6vw, 5rem); line-height: .95; margin: 12px 0 14px; }
-      p { color: var(--muted); line-height: 1.65; font-size: 1.04rem; }
-      .cta { display:inline-block; margin-top: 18px; padding: 14px 18px; border-radius: 14px; background: linear-gradient(90deg,var(--accent),#7aa8ff); color:#061019; font-weight: 800; text-decoration:none; }
-      .secondary { display:inline-block; margin-left: 12px; color: var(--text); text-decoration:none; border:1px solid rgba(255,255,255,.12); padding: 14px 18px; border-radius: 14px; }
-      .list { margin: 18px 0 0; padding-left: 18px; color: var(--muted); line-height:1.8; }
-      .form { display:grid; gap: 12px; }
-      input, select, textarea { width:100%; padding: 14px 14px; border-radius: 12px; border:1px solid rgba(255,255,255,.12); background:#08131d; color:var(--text); }
-      textarea { min-height: 110px; resize: vertical; }
-      .grid { display:grid; grid-template-columns: repeat(3,1fr); gap: 16px; margin-top: 22px; }
-      .card { background: rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.06); border-radius: 18px; padding: 18px; }
-      .muted { color: var(--muted); }
-      .section { margin-top: 22px; }
-      .footer { margin-top: 30px; display:flex; justify-content:space-between; gap:16px; color:#7f93a7; font-size:.95rem; flex-wrap:wrap; }
-      .small { font-size:.95rem; }
-      .split { display:grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-      .pill { display:inline-block; padding: 7px 11px; border-radius:999px; background: rgba(125,255,178,.12); color: var(--accent2); font-size:.82rem; font-weight:700; }
-      @media (max-width: 900px){ .hero, .grid, .split { grid-template-columns: 1fr; } .nav { flex-direction:column; align-items:flex-start; } }
-    </style>
-  </head>
-  <body>
-    <div class="wrap">
-      <div class="nav">
-        <div class="brand">NeighborlyWork</div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>NeighborlyWork | HVAC Quotes</title>
+  <meta name="description" content="One request. Three HVAC quotes. You choose the best. Get free, vetted HVAC quotes from local contractors." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
+    :root{
+      --green:#1a5c3a;
+      --green2:#2a7a4f;
+      --orange:#c8401a;
+      --white:#ffffff;
+      --off:#f5f2ec;
+      --char:#141810;
+      --text:#141810;
+      --muted:#5f655f;
+      --line:#e4e1da;
+      --shadow:0 18px 50px rgba(20,24,16,.08);
+      --radius:22px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--text);line-height:1.5}
+    a{text-decoration:none;color:inherit}
+    .wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+    .nav{
+      position:sticky;top:0;z-index:30;background:rgba(255,255,255,.96);backdrop-filter:saturate(180%) blur(14px);
+      border-bottom:1px solid var(--line)
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;min-height:76px}
+    .brand{font-family:'Fraunces',serif;font-weight:700;font-size:1.4rem;color:var(--green);letter-spacing:-.02em}
+    .nav-links{display:flex;align-items:center;gap:22px}
+    .nav-links a{color:#2a2f29;font-weight:600;font-size:.98rem}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border-radius:14px;padding:14px 18px;font-weight:700;transition:.2s ease;border:1px solid transparent;cursor:pointer}
+    .btn-green{background:var(--green);color:#fff}
+    .btn-green:hover{background:var(--green2)}
+    .btn-outline{border-color:rgba(255,255,255,.34);color:#fff;background:transparent}
+    .btn-orange{background:var(--orange);color:#fff}
+    .btn-light{background:#fff;color:var(--green);border-color:var(--line)}
+    .hero{min-height:calc(100vh - 76px);background:var(--char);color:#fff;display:flex;align-items:center;padding:56px 0 42px}
+    .hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:34px;align-items:center}
+    h1,h2,h3,.display{font-family:'Fraunces',serif;letter-spacing:-.03em;line-height:.98;margin:0}
+    .hero h1{font-size:clamp(3rem,6.2vw,6.5rem);max-width:11ch}
+    .sub{font-size:1.15rem;color:#cbd3cc;max-width:58ch;margin:22px 0 26px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:16px}
+    .trustline{color:#aeb6ae;font-size:.95rem;margin-top:12px}
+    .stat-row{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+    .stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.09);border-radius:18px;padding:14px 16px;text-align:center;color:#ecf0ec;font-weight:700}
+    .hero-card{background:#fff;color:var(--text);border-radius:28px;padding:30px;border:1px solid rgba(255,255,255,.08);box-shadow:var(--shadow)}
+    .hero-card .eyebrow{color:var(--green);font-weight:800;letter-spacing:.16em;font-size:.75rem;text-transform:uppercase}
+    .hero-card h2{font-size:2rem;margin-top:10px;margin-bottom:12px}
+    .hero-card p{color:var(--muted);margin:0 0 16px}
+    .steps-mini{display:grid;gap:12px}
+    .mini{display:flex;gap:12px;align-items:flex-start;background:#f8faf8;border:1px solid var(--line);padding:14px;border-radius:16px}
+    .mini b{display:block;margin-bottom:2px}
+    .mini span{color:var(--muted);font-size:.96rem}
+    .section{padding:88px 0}
+    .section.alt{background:var(--off)}
+    .kicker{font-size:.8rem;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:14px}
+    .section h2{font-size:clamp(2.2rem,4vw,4rem);max-width:14ch;margin-bottom:16px}
+    .lead{font-size:1.08rem;color:var(--muted);max-width:64ch}
+    .cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:30px;position:relative}
+    .cards-3::before{content:'';position:absolute;left:11%;right:11%;top:72px;height:2px;background:linear-gradient(90deg,transparent,var(--line),transparent);display:block}
+    .step-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 12px 35px rgba(20,24,16,.04);position:relative;z-index:1}
+    .step-no{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:999px;background:#eef5ef;color:var(--green);font-weight:800;margin-bottom:14px}
+    .step-icon{font-size:1.4rem}
+    .step-card h3{font-size:1.45rem;margin:10px 0 10px}
+    .step-card p{color:var(--muted);margin:0}
+    .testimonials,.services,.trust-grid{display:grid;gap:18px;margin-top:28px}
+    .testimonials{grid-template-columns:repeat(3,1fr)}
+    .quote{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow)}
+    .quote p{font-size:1.03rem;color:#2a2f29}
+    .quote .by{margin-top:16px;color:var(--muted);font-weight:700}
+    .services{grid-template-columns:repeat(3,1fr)}
+    .tile{background:#fff;border:1px solid var(--line);border-radius:20px;padding:22px;min-height:136px;display:flex;flex-direction:column;justify-content:space-between}
+    .tile .ico{font-size:1.6rem}
+    .tile strong{font-size:1.2rem}
+    .tile span{color:var(--muted)}
+    .contractor-band{background:var(--green);color:#fff;padding:88px 0}
+    .band-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:start}
+    .band h2{font-size:clamp(2.2rem,4vw,4rem);margin-bottom:12px}
+    .band p,.band li{color:#d6e3dc}
+    .band ul{margin:20px 0 0;padding-left:18px;line-height:1.9}
+    .form-card{background:#ffffff;border-radius:24px;padding:22px;border:1px solid rgba(255,255,255,.14);box-shadow:var(--shadow)}
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    .field{display:flex;flex-direction:column;gap:7px;margin-bottom:12px}
+    label{font-size:.92rem;font-weight:700;color:#293129}
+    input{width:100%;padding:14px 14px;border-radius:14px;border:1px solid #d9dfd8;background:#fff;color:var(--text);font:inherit}
+    input:focus{outline:2px solid rgba(26,92,58,.22);border-color:rgba(26,92,58,.45)}
+    .trust-row{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:28px}
+    .trust-card{background:#fff;border:1px solid var(--line);border-radius:20px;padding:18px;text-align:center}
+    .trust-card .emoji{font-size:1.4rem}
+    .trust-card b{display:block;margin:10px 0 6px}
+    .final-cta{background:var(--char);color:#fff;padding:90px 0;text-align:center}
+    .final-cta h2{font-size:clamp(2.4rem,5vw,4.8rem);max-width:16ch;margin:0 auto 12px}
+    .final-cta p{color:#c7cec8;margin:0 0 24px;font-size:1.08rem}
+    footer{background:#0f130f;color:#d3d9d3;padding:28px 0 34px}
+    .footer-grid{display:grid;grid-template-columns:1.1fr .9fr 1fr;gap:18px;align-items:start}
+    .footer-links{display:flex;flex-wrap:wrap;gap:14px;justify-content:center}
+    .footer-links a,.footer-right{color:#c9d0ca}
+    .hamburger{display:none;background:none;border:none;font-size:1.6rem;cursor:pointer;color:#1b1f1a}
+    .mobile-menu{display:none;border-top:1px solid var(--line);padding:14px 0 20px}
+    .mobile-menu a{display:block;padding:12px 0;font-weight:700;color:#222823}
+    @media (max-width: 980px){
+      .hero-grid,.band-grid,.footer-grid{grid-template-columns:1fr}
+      .cards-3,.testimonials,.services,.trust-row,.stat-row{grid-template-columns:1fr}
+      .cards-3::before{display:none}
+      .nav-links{display:none}
+      .hamburger{display:block}
+      .mobile-menu.open{display:block}
+      .hero{min-height:auto}
+      .hero h1{max-width:100%}
+      .sub{max-width:100%}
+    }
+  </style>
+</head>
+<body>
+  <header class="nav">
+    <div class="wrap nav-inner">
+      <a class="brand" href="#top">NeighborlyWork</a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#how">How It Works</a>
+        <a href="#contractors">For Contractors</a>
+        <a href="#quote-form" class="btn btn-green" style="padding:12px 16px">Get Free Quotes</a>
+      </nav>
+      <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open');" aria-label="Toggle menu">☰</button>
+    </div>
+    <div class="wrap mobile-menu">
+      <a href="#how">How It Works</a>
+      <a href="#contractors">For Contractors</a>
+      <a href="#quote-form">Get Free Quotes</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap hero-grid">
         <div>
-          <a href="#how">How it works</a>
-          <a href="contractors.html">For contractors</a>
-          <a href="get-quotes.html">Get quotes</a>
-          <a href="mailto:mxjarvis.builds@gmail.com">Contact</a>
+          <h1>Get 3 Free HVAC Quotes. Compare and Save.</h1>
+          <p class="sub">Submit once. Three vetted local contractors compete for your job. You see all three quotes side by side, with no pressure, no spam, and completely free for homeowners.</p>
+          <div class="hero-actions">
+            <a class="btn btn-green" href="#quote-form" onclick="alert('Coming soon — join our waitlist')" style="padding:16px 22px;font-size:1.02rem">Get My Free Quotes →</a>
+            <a class="btn btn-outline" href="#contractors">Are you a contractor? Join here</a>
+          </div>
+          <div class="trustline">Free for homeowners · Takes 2 minutes · No sales calls</div>
+          <div class="stat-row">
+            <div class="stat">🏠 Homeowners matched</div>
+            <div class="stat">⭐ Vetted contractors only</div>
+            <div class="stat">💰 Avg savings vs. single quote: 20%</div>
+          </div>
+        </div>
+        <div class="hero-card" id="quote-form">
+          <div class="eyebrow">Homeowner request</div>
+          <h2>One request. Three quotes.</h2>
+          <p>Tell us about your home and HVAC project. We’ll route it to up to 3 local contractors.</p>
+          <div class="steps-mini">
+            <div class="mini"><div>🏠</div><div><b>Home details</b><span>Address, system type, and project scope.</span></div></div>
+            <div class="mini"><div>📩</div><div><b>Match & quote</b><span>Contractors compete with blind quotes.</span></div></div>
+            <div class="mini"><div>✅</div><div><b>Choose the best</b><span>Compare equipment, price, and timeline.</span></div></div>
+          </div>
+          <a class="btn btn-green" href="#quote-form" onclick="alert('Coming soon — join our waitlist')" style="margin-top:18px;width:100%">Get My Free Quotes →</a>
         </div>
       </div>
+    </section>
 
-      <div class="hero">
-        <div class="panel">
-          <div class="eyebrow">Sacramento area</div>
-          <h1>Compare HVAC quotes without calling 10 companies.</h1>
-          <p>Tell us what you need, and we connect you with up to 3 local HVAC contractors. Fast quotes for repairs, installs, and replacements.</p>
-          <a class="cta" href="get-quotes.html">Get free quotes</a>
-          <a class="secondary" href="contractors.html">I'm a contractor</a>
-          <ul class="list">
-            <li>Free for homeowners</li>
-            <li>Sacramento, Elk Grove, Roseville, Folsom, Citrus Heights</li>
-            <li>Repairs, installs, tune-ups, and replacements</li>
-          </ul>
+    <section class="section" id="how">
+      <div class="wrap">
+        <div class="kicker">How it works</div>
+        <h2>Simple. Fast. Free.</h2>
+        <p class="lead">NeighborlyWork is built for homeowners who want a better HVAC buying experience, not a sales pitch. We make local contractors compete for your job so you can choose with confidence.</p>
+        <div class="cards-3">
+          <div class="step-card">
+            <div class="step-no">1</div>
+            <div class="step-icon">🏠</div>
+            <h3>Tell us about your home</h3>
+            <p>Fill out a 2-minute form with your address, system type, home size, and what you need.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-no">2</div>
+            <div class="step-icon">👥</div>
+            <h3>Get matched with 3 contractors</h3>
+            <p>We send your request to 3 vetted local HVAC contractors in your area. They each submit a blind quote.</p>
+          </div>
+          <div class="step-card">
+            <div class="step-no">3</div>
+            <div class="step-icon">✅</div>
+            <h3>Compare and choose</h3>
+            <p>You see all 3 quotes side by side, including equipment, price, and timeline. No obligation.</p>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="panel" id="request">
-          <div class="eyebrow">Free for homeowners</div>
-          <h2 style="margin:10px 0 8px;font-size:1.5rem">How it works</h2>
-          <ul class="list">
-            <li>Fill out a 2-minute quote form</li>
-            <li>We match you with up to 3 qualified local contractors</li>
-            <li>They contact you within 24 hours with quotes</li>
-            <li>You pick the best deal — no obligation</li>
-          </ul>
-          <a class="cta" href="get-quotes.html" style="display:block;text-align:center;margin-top:22px">Get free quotes →</a>
-          <p class="small muted" style="margin-top:14px">No spam. No obligation. 100% free for homeowners.</p>
+    <section class="section alt">
+      <div class="wrap">
+        <div class="kicker">Why homeowners trust us</div>
+        <h2>Real savings, less hassle.</h2>
+        <div class="testimonials">
+          <div class="quote"><p>“I got quotes from $7,200 to $11,400 for the same job. Went with the middle one and saved over $2,000.”</p><div class="by">— Maria T., Orlando FL</div></div>
+          <div class="quote"><p>“No one called me 5 times trying to upsell me. I just got 3 clean quotes in my email and picked the one I liked.”</p><div class="by">— James R., Tampa FL</div></div>
+          <div class="quote"><p>“My system died in July. Had 3 quotes by the next morning. Installed by the weekend.”</p><div class="by">— Patricia M., Houston TX</div></div>
         </div>
       </div>
+    </section>
 
-      <div class="grid section" id="how">
-        <div class="card"><strong>1. Submit request</strong><p class="muted">Homeowner sends basic job details.</p></div>
-        <div class="card"><strong>2. Match contractors</strong><p class="muted">We route to qualified Sacramento HVAC companies.</p></div>
-        <div class="card"><strong>3. Compare quotes</strong><p class="muted">Homeowner picks the best option.</p></div>
+    <section class="section">
+      <div class="wrap">
+        <div class="kicker">HVAC services</div>
+        <h2>Every major HVAC job, one place.</h2>
+        <p class="lead">Built for the most common homeowner HVAC buying decisions, from emergency replacements to routine tune-ups.</p>
+        <div class="services">
+          <div class="tile"><div class="ico">❄️</div><div><strong>AC Installation</strong><br><span>New cooling systems sized for your home.</span></div></div>
+          <div class="tile"><div class="ico">🔥</div><div><strong>Furnace Replacement</strong><br><span>Reliable heating upgrades and swaps.</span></div></div>
+          <div class="tile"><div class="ico">🌀</div><div><strong>Mini-Split Systems</strong><br><span>Flexible zoning and room-by-room comfort.</span></div></div>
+          <div class="tile"><div class="ico">🏠</div><div><strong>Full HVAC System</strong><br><span>Complete system replacements and installs.</span></div></div>
+          <div class="tile"><div class="ico">🔧</div><div><strong>AC or Heating Repair</strong><br><span>Fast service for broken or failing systems.</span></div></div>
+          <div class="tile"><div class="ico">📋</div><div><strong>System Tune-Up &amp; Maintenance</strong><br><span>Preventive care to keep things running.</span></div></div>
+        </div>
+        <p class="lead" style="margin-top:18px">Expanding to plumbing, roofing, and electrical soon. HVAC first.</p>
       </div>
+    </section>
 
-      <div class="grid section" id="contractors">
-        <div class="card"><span class="pill">For contractors</span><p class="muted">Pay per lead or per booked estimate.</p></div>
-        <div class="card"><strong>Target market</strong><p class="muted">Sacramento and nearby suburbs.</p></div>
-        <div class="card"><strong>Contact</strong><p class="muted"><a href="mailto:mxjarvis.builds@gmail.com">mxjarvis.builds@gmail.com</a></p></div>
+    <section class="contractor-band" id="contractors">
+      <div class="wrap band">
+        <div class="kicker" style="color:#d4f0df">For contractors</div>
+        <h2>Are you an HVAC contractor?</h2>
+        <p>Join our network. Free to sign up. You only pay $350 when you close and install a job from our leads. No monthly fees. No subscription.</p>
+        <div class="band-grid">
+          <div>
+            <ul>
+              <li>Free to join — no upfront cost</li>
+              <li>Only pay when you close a job ($350 flat)</li>
+              <li>Leads in your exact service zip codes</li>
+            </ul>
+          </div>
+          <div class="form-card">
+            <div class="form-grid">
+              <div class="field"><label>Business name</label><input type="text" placeholder="Company name" /></div>
+              <div class="field"><label>Your name</label><input type="text" placeholder="Your name" /></div>
+              <div class="field"><label>Phone number</label><input type="text" placeholder="(555) 555-5555" /></div>
+              <div class="field"><label>City and zip code</label><input type="text" placeholder="Sacramento, 95814" /></div>
+            </div>
+            <button class="btn btn-orange" style="width:100%;margin-top:8px;padding:15px 18px" onclick="alert('Coming soon — join our waitlist')">Apply to Join</button>
+          </div>
+        </div>
       </div>
+    </section>
 
-      <div class="footer">
-        <div>Jarvis Builds</div>
-        <div><a href="privacy.html">Privacy</a> · <a href="terms.html">Terms</a></div>
+    <section class="section alt">
+      <div class="wrap">
+        <div class="kicker">Trust &amp; credibility</div>
+        <h2>Private, vetted, and fast.</h2>
+        <div class="trust-row">
+          <div class="trust-card"><div class="emoji">🔒</div><b>Secure &amp; Private</b><span>We never sell your data</span></div>
+          <div class="trust-card"><div class="emoji">✅</div><b>Vetted Contractors</b><span>Licensed and insured only</span></div>
+          <div class="trust-card"><div class="emoji">💬</div><b>No Spam</b><span>We only share info with your 3 matches</span></div>
+          <div class="trust-card"><div class="emoji">⚡</div><b>Fast</b><span>Quotes within 48 hours</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta">
+      <div class="wrap">
+        <h2>Your HVAC quote is waiting.</h2>
+        <p>Takes 2 minutes. Completely free. No obligation.</p>
+        <a class="btn btn-green" href="#quote-form" onclick="alert('Coming soon — join our waitlist')" style="padding:18px 26px;font-size:1.05rem">Get My Free Quotes →</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-grid">
+      <div>
+        <div class="brand" style="color:#d9eadf">NeighborlyWork</div>
+        <div style="margin-top:8px;color:#9faf9f">One request. Three HVAC quotes. You choose the best.</div>
+      </div>
+      <div class="footer-links">
+        <a href="#how">How It Works</a>
+        <a href="#contractors">For Contractors</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <div class="footer-right" style="text-align:right">
+        <div><a href="mailto:mxjarvis.builds@gmail.com">mxjarvis.builds@gmail.com</a></div>
+        <div style="margin-top:10px">© 2026 NeighborlyWork. HVAC quotes made simple.</div>
       </div>
     </div>
-  </body>
+  </footer>
+</body>
 </html>

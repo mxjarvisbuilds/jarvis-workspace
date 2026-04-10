@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Homeowner Account | NeighborlyWork</title>
+  <meta name="description" content="Create an account to save HVAC quotes, track requests, and compare contractors in one place." />
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&display=swap');
+    :root{--green:#1a5c3a;--green2:#2a7a4f;--orange:#c8401a;--off:#f5f2ec;--white:#fff;--char:#141810;--text:#141810;--muted:#5f655f;--line:#e4e1da;--shadow:0 18px 50px rgba(20,24,16,.08);}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:'DM Sans',system-ui,sans-serif;background:var(--off);color:var(--text)}
+    .wrap{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:32px 18px}
+    .card{width:min(100%,560px);background:#fff;border:1px solid var(--line);border-radius:28px;box-shadow:var(--shadow);padding:30px}
+    .brand{display:flex;align-items:center;justify-content:center;gap:10px;font-family:'Fraunces',serif;font-weight:700;font-size:1.5rem;color:var(--green);margin-bottom:18px}
+    .mark{width:14px;height:14px;border-radius:4px;background:var(--green);box-shadow:0 0 0 4px rgba(26,92,58,.10)}
+    h1,h2{font-family:'Fraunces',serif;letter-spacing:-.03em;line-height:.98;margin:0}
+    h1{font-size:clamp(2rem,4.6vw,3.2rem);text-align:center}
+    .sub{color:var(--muted);text-align:center;max-width:44ch;margin:14px auto 24px;line-height:1.6}
+    .tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;background:#f3f5f1;border:1px solid var(--line);padding:6px;border-radius:16px;margin-bottom:22px}
+    .tab{border:none;background:transparent;padding:12px 10px;border-radius:12px;font-weight:800;color:var(--muted);cursor:pointer;font:inherit}
+    .tab.active{background:#fff;color:var(--green);box-shadow:0 8px 22px rgba(20,24,16,.06)}
+    .screen{display:none}
+    .screen.active{display:block}
+    .form{display:grid;gap:12px}
+    .field{display:grid;gap:6px}
+    label{font-size:.93rem;font-weight:700;color:#283229}
+    input{width:100%;padding:14px 14px;border:1px solid var(--line);border-radius:14px;background:#fff;font:inherit;color:var(--text)}
+    input:focus{outline:2px solid rgba(26,92,58,.22);border-color:rgba(26,92,58,.42)}
+    .password-wrap{position:relative}
+    .toggle{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:none;background:#eef5ef;color:var(--green);font-weight:800;border-radius:10px;padding:8px 10px;cursor:pointer}
+    .btn{display:inline-flex;align-items:center;justify-content:center;border:none;border-radius:16px;padding:15px 18px;font-weight:800;cursor:pointer;font-size:1rem}
+    .btn-green{background:var(--green);color:#fff;width:100%}
+    .btn-orange{background:var(--orange);color:#fff;width:100%}
+    .btn-light{background:#fff;border:1px solid var(--line);color:var(--text)}
+    .divider{display:flex;align-items:center;gap:12px;color:var(--muted);margin:18px 0}
+    .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--line)}
+    .small{font-size:.92rem;color:var(--muted);line-height:1.6}
+    .link-row{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .link{background:none;border:none;color:var(--green);font-weight:800;cursor:pointer;font:inherit}
+    .dashboard{display:grid;gap:16px}
+    .panel{border:1px solid var(--line);border-radius:20px;padding:18px;background:#fafbf9}
+    .panel h2{font-size:1.5rem;margin-bottom:6px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .stat{background:#fff;border:1px solid var(--line);border-radius:16px;padding:14px}
+    .stat b{display:block;font-size:1.2rem;color:var(--green)}
+    .req{background:#fff;border:1px solid var(--line);border-radius:18px;padding:16px;display:grid;gap:8px}
+    .req-top{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center}
+    .tag{display:inline-block;padding:6px 10px;border-radius:999px;background:#eef5ef;color:var(--green);font-weight:800;font-size:.8rem}
+    .quote-list{display:grid;gap:12px;margin-top:10px}
+    .quote{border:1px solid var(--line);border-radius:14px;padding:14px;background:#fafbf9}
+    .quote strong{display:block;margin-bottom:4px}
+    .quote .meta{color:var(--muted);font-size:.9rem}
+    .quote .price{font-size:1.15rem;font-weight:800;color:var(--green)}
+    .dashboard-actions{display:flex;gap:10px;flex-wrap:wrap}
+    @media(max-width:640px){.card{padding:22px}.grid{grid-template-columns:1fr}.tabs{grid-template-columns:1fr}.dashboard-actions .btn{width:100%}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <div class="brand"><span class="mark"></span>NeighborlyWork</div>
+
+      <div class="tabs" role="tablist" aria-label="Homeowner account tabs">
+        <button class="tab active" data-screen="signup" type="button">Sign Up</button>
+        <button class="tab" data-screen="login" type="button">Log In</button>
+        <button class="tab" data-screen="dashboard" type="button">Dashboard</button>
+      </div>
+
+      <!-- SCREEN 1 -->
+      <section class="screen active" id="signup">
+        <h1>Create your free account</h1>
+        <p class="sub">Save your quotes, track your requests, and compare contractors, all in one place.</p>
+        <form class="form" onsubmit="event.preventDefault(); openScreen('dashboard');">
+          <div class="grid">
+            <div class="field"><label>First name</label><input type="text" placeholder="First name" required></div>
+            <div class="field"><label>Last name</label><input type="text" placeholder="Last name" required></div>
+          </div>
+          <div class="field"><label>Email address</label><input type="email" placeholder="you@example.com" required></div>
+          <div class="field">
+            <label>Password</label>
+            <div class="password-wrap">
+              <input id="signupPass" type="password" placeholder="Create a password" required>
+              <button class="toggle" type="button" onclick="togglePass('signupPass', this)">Show</button>
+            </div>
+          </div>
+          <div class="field">
+            <label>Confirm password</label>
+            <div class="password-wrap">
+              <input id="signupPass2" type="password" placeholder="Confirm password" required>
+              <button class="toggle" type="button" onclick="togglePass('signupPass2', this)">Show</button>
+            </div>
+          </div>
+          <button class="btn btn-green" type="submit">Create Account &amp; Get My Quotes →</button>
+        </form>
+        <div class="divider">Already have an account?</div>
+        <div class="link-row"><button class="link" type="button" onclick="openScreen('login')">Log in instead</button></div>
+      </section>
+
+      <!-- SCREEN 2 -->
+      <section class="screen" id="login">
+        <h1>Log in to your account</h1>
+        <p class="sub">Access your saved quote requests, contractor responses, and updates.</p>
+        <form class="form" onsubmit="event.preventDefault(); openScreen('dashboard');">
+          <div class="field"><label>Email address</label><input type="email" placeholder="you@example.com" required></div>
+          <div class="field">
+            <label>Password</label>
+            <div class="password-wrap">
+              <input id="loginPass" type="password" placeholder="Your password" required>
+              <button class="toggle" type="button" onclick="togglePass('loginPass', this)">Show</button>
+            </div>
+          </div>
+          <button class="btn btn-green" type="submit">Log In →</button>
+        </form>
+        <div class="link-row">
+          <button class="link" type="button" onclick="openScreen('signup')">Create account</button>
+          <button class="link" type="button" onclick="alert('Coming soon')">Forgot password?</button>
+        </div>
+      </section>
+
+      <!-- SCREEN 3 -->
+      <section class="screen" id="dashboard">
+        <h1>Your HVAC dashboard</h1>
+        <p class="sub">Track your request, compare quotes, and choose the best contractor when you’re ready.</p>
+        <div class="dashboard">
+          <div class="panel">
+            <h2>Request status</h2>
+            <div class="small">Current request: <strong>AC replacement</strong></div>
+            <div class="small">Status: <strong style="color:var(--green)">3 quotes in progress</strong></div>
+          </div>
+          <div class="grid">
+            <div class="stat"><b>3</b><span class="small">quotes requested</span></div>
+            <div class="stat"><b>2</b><span class="small">quotes received</span></div>
+            <div class="stat"><b>1</b><span class="small">chosen contractor</span></div>
+          </div>
+          <div class="panel">
+            <h2>Compare your quotes</h2>
+            <div class="quote-list">
+              <div class="quote"><strong>Comfort Pro HVAC</strong><div class="meta">Install tomorrow · 10-year warranty</div><div class="price">$8,900</div></div>
+              <div class="quote"><strong>All Season Heating & Air</strong><div class="meta">Install this week · 12-year warranty</div><div class="price">$8,200</div></div>
+              <div class="quote"><strong>Neighbor Climate Co.</strong><div class="meta">Install Monday · 10-year warranty</div><div class="price">$9,100</div></div>
+            </div>
+          </div>
+          <div class="dashboard-actions">
+            <button class="btn btn-light" type="button" onclick="alert('Coming soon')">Message contractors</button>
+            <button class="btn btn-orange" type="button" onclick="alert('Coming soon')">Choose contractor</button>
+            <button class="btn btn-green" type="button" onclick="openScreen('signup')">Start new request</button>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+    function openScreen(id) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+      document.querySelector(`.tab[data-screen="${id}"]`).classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    function togglePass(id, btn) {
+      const input = document.getElementById(id);
+      const show = input.type === 'password';
+      input.type = show ? 'text' : 'password';
+      btn.textContent = show ? 'Hide' : 'Show';
+    }
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => openScreen(tab.dataset.screen));
+    });
+  </script>
+</body>
+</html>

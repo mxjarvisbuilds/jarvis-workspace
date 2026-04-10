@@ -12,8 +12,9 @@ Before doing anything else:
 
 1. Read `SOUL.md` — this is who you are
 2. Read `USER.md` — this is who you're helping
-3. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
-4. **If in MAIN SESSION** (direct chat with your human): Also read `MEMORY.md`
+3. Read `MEMORY.md` in main session
+4. Read `memory/YYYY-MM-DD.md` (today + yesterday) for recent context
+5. Read `Home.md` if you need vault navigation or project links
 
 Don't ask permission. Just do it.
 
@@ -21,8 +22,12 @@ Don't ask permission. Just do it.
 
 You wake up fresh each session. These files are your continuity:
 
-- **Daily notes:** `memory/YYYY-MM-DD.md` (create `memory/` if needed) — raw logs of what happened
-- **Long-term:** `MEMORY.md` — your curated memories, like a human's long-term memory
+- **Curated memory:** `MEMORY.md` — stable facts, preferences, decisions, durable truths
+- **Daily notes:** `memory/YYYY-MM-DD.md` — raw logs of what happened today
+- **Weekly notes:** `memory/weekly/YYYY-WW.md` — rollups and pruning
+- **Project notes:** `projects/*.md` — active project status
+- **People notes:** `people/*.md` — stable context about key people
+- **Inbox:** `inbox.md` — temporary capture before classification
 
 Capture what matters. Decisions, context, things to remember. Skip the secrets unless asked to keep them.
 
@@ -31,10 +36,10 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - **ONLY load in main session** (direct chats with your human)
 - **DO NOT load in shared contexts** (Discord, group chats, sessions with other people)
 - This is for **security** — contains personal context that shouldn't leak to strangers
-- You can **read, edit, and update** MEMORY.md freely in main sessions
+- You can **read, edit, and update** `MEMORY.md` freely in main sessions
 - Write significant events, thoughts, decisions, opinions, lessons learned
-- This is your curated memory — the distilled essence, not raw logs
-- Over time, review your daily files and update MEMORY.md with what's worth keeping
+- This is your curated memory, the distilled essence, not raw logs
+- Promote durable items from daily notes into `MEMORY.md` on a cadence
 
 ### 📝 Write It Down - No "Mental Notes"!
 
@@ -44,6 +49,9 @@ Capture what matters. Decisions, context, things to remember. Skip the secrets u
 - When you learn a lesson → update AGENTS.md, TOOLS.md, or the relevant skill
 - When you make a mistake → document it so future-you doesn't repeat it
 - **Text > Brain** 📝
+- Default flow: raw note first, curated memory later
+- Checkpoint every 3-5 tool calls on non-trivial work
+- Re-read vault notes after compaction or if context drifts
 
 ## Red Lines
 
