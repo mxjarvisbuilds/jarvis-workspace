@@ -6,7 +6,7 @@ Hi [First Name],
 
 I’m reaching out about NeighborlyWork, a new HVAC quote marketplace serving Sacramento, Roseville, and Folsom.
 
-Homeowners submit one request and receive 3 competing quotes from vetted local contractors. It’s a cleaner way to get real homeowner leads without paying upfront or buying junk leads.
+Homeowners submit one request and receive up to 3 competing quotes from vetted local contractors. It’s a cleaner way to get real homeowner leads without paying upfront or buying junk leads.
 
 Why contractors are joining:
 - Free to join
@@ -18,3 +18,5 @@ If you’d like to be one of the first contractors in the network, reply here an
 
 Best,
 NeighborlyWork
+
+If you no longer want emails from us, reply "unsubscribe."

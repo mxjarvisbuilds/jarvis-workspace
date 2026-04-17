@@ -6,6 +6,7 @@ Generate HVAC homeowner leads in Sacramento, Roseville, and Folsom.
 ## Budget
 - Starting budget: $300 total test budget
 - Daily cap: $10/day
+- Primary landing pages: `repo-site/get-quotes.html`, `repo-site/homeowner-auth.html`, `repo-site/lead-form.html`, `repo-site/thank-you.html`
 
 ## Campaign Structure
 
@@ -23,6 +24,8 @@ Keywords:
 - hvac install quote
 - ac install quote
 - new ac unit quote
+- air conditioner installation
+- new ac installation
 
 #### Ad Group B: Furnace / Heat Pump
 Keywords:
@@ -31,6 +34,8 @@ Keywords:
 - hvac replacement quote
 - heating and cooling quote
 - hvac contractor sacramento
+- furnace install quote
+- heat pump replacement quote
 
 #### Ad Group C: Emergency / Repair
 Keywords:
@@ -39,6 +44,8 @@ Keywords:
 - hvac repair quote
 - air conditioning repair quote
 - hvac service near me
+- emergency hvac repair
+- same day ac repair
 
 ## Negative Keywords
 - free
@@ -54,33 +61,39 @@ Keywords:
 - repair manual
 - pdf
 
-## Ad Copy
+## Asset Group 1 Upgrade Set
 
-### Ad 1
-Headline 1: Get 3 HVAC Quotes
-Headline 2: Sacramento, Roseville, Folsom
-Headline 3: Free for Homeowners
-Description: Compare 3 blind quotes from vetted HVAC contractors. No spam. No pressure. One request gets the job done.
+### Headlines (15)
+- Get 3 HVAC Quotes
+- Free HVAC Quotes
+- No-Obligation Quotes
+- Vetted Local Pros
+- Compare 3 Bids
+- Sacramento HVAC Help
+- Roseville HVAC Quotes
+- Folsom HVAC Quotes
+- Need a New AC?
+- Furnace Replace Fast
+- Same-Day Repair Help
+- Save on HVAC Install
+- Trusted Contractor Match
+- Fast Quote Requests
+- Homeowner-Friendly
 
-### Ad 2
-Headline 1: Need a New AC?
-Headline 2: Compare 3 Local Quotes
-Headline 3: Vetted Contractors Only
-Description: Submit once and get competing HVAC quotes from trusted pros in your area. Fast, simple, free for homeowners.
-
-### Ad 3
-Headline 1: HVAC Install Quotes
-Headline 2: Sacramento Area
-Headline 3: Find the Best Price
-Description: Homeowners can request 3 blind bids from vetted contractors. Compare equipment, warranty, and timeline side by side.
+### Descriptions (5)
+- Compare up to 3 blind HVAC quotes from vetted local contractors.
+- Free for homeowners. No spam, no pressure, just clear HVAC options.
+- Need repair or replacement? Get matched with trusted local HVAC pros.
+- One request, multiple quotes, side-by-side comparison, better decisions.
+- Sacramento, Roseville, and Folsom homeowners can request quotes fast.
 
 ## Assets Needed
-- Headline variants
-- Short description variants
-- Callout extensions
-- Sitelinks
-- Location extension
-- Phone extension (optional)
+- Images: none currently available in a usable campaign library; need 3 landscape, 3 square, 1 portrait
+- Video: none present, do not auto-generate
+- Sitelinks: add at least 4
+- Square logo: use `neighborlywork/logo-v2.svg`
+- Horizontal logo: not currently available, needs creation or export
+- Audience signal: add website visitors + custom segment for high-intent HVAC searchers
 
 ## Landing Page Copy
 - Hero: Get 3 blind HVAC quotes

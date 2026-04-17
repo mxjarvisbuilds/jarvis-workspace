@@ -78,6 +78,8 @@
     .input:focus, select:focus { border-color: rgba(31,143,77,.4); box-shadow: 0 0 0 4px rgba(31,143,77,.08); }
 
     .actions { display:flex; justify-content:space-between; gap: 10px; margin-top: 20px; }
+    .legal { margin-top: 14px; font-size: .84rem; color: var(--muted); line-height:1.6; }
+    .legal a { color: var(--green-dark); font-weight:700; text-decoration:none; }
     .btn {
       border: 0; border-radius: 999px; padding: 14px 18px; font-weight: 800; cursor:pointer; text-decoration:none; display:inline-flex; align-items:center; justify-content:center;
     }
@@ -212,6 +214,7 @@
             <div class="field"><label><div><strong>Email address</strong></div></label><input class="input" type="email" name="email" placeholder="mia@example.com" required /></div>
           </div>
           <div class="fine">We do not share your data with any contractors. Only the contractor you choose gets your contact information. Contractors can ask clarifying questions inside the secure chat, but your contact info stays private until you pick a contractor. No spam. No selling your data.</div>
+          <div class="legal"><strong>Notice at Collection:</strong> We collect your name, address, phone number, email address, and HVAC project details to match you with contractors and provide quotes. <a href="privacy.html">Privacy Policy</a> · <a href="privacy.html">Do Not Sell or Share My Personal Information</a></div>
         </div>
 
         <div id="step5" class="step hidden">

@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>NeighborlyWork — Get My Free Quotes</title>
   <meta name="description" content="Multi-step HVAC quote intake for NeighborlyWork." />
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="supabase-config.js"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700;800&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -20,6 +22,9 @@
       --green-soft: rgba(31,143,77,.10);
       --shadow: 0 18px 44px rgba(19,33,24,.08);
       --radius: 22px;
+      --error: #a0372b;
+      --error-bg: #fff1ed;
+      --success-bg: #eef7f0;
     }
     * { box-sizing: border-box; }
     body {
@@ -54,7 +59,6 @@
     .step-title { font-family: "Fraunces", Georgia, serif; font-size: clamp(1.7rem, 3vw, 2.4rem); letter-spacing:-.04em; margin: 0 0 18px; }
     .grid { display:grid; gap:12px; }
     .grid.two { grid-template-columns: repeat(2, minmax(0,1fr)); }
-    .grid.three { grid-template-columns: repeat(3, minmax(0,1fr)); }
 
     .option-actions { display:flex; justify-content:flex-end; margin: 0 0 12px; }
     .mode-btn {
@@ -67,6 +71,7 @@
       display:flex; align-items:flex-start; gap:12px; padding:14px; border:1px solid var(--line); border-radius:16px; background:#fbfcfa;
     }
     .radio input { margin-top:4px; accent-color: var(--green); }
+    .section-title { font-family: "Fraunces", Georgia, serif; font-size: 1.25rem; letter-spacing:-.03em; margin: 6px 0 2px; }
     .radio strong, .field label strong { display:block; }
     .radio span, .field small { color: var(--muted); display:block; margin-top:3px; line-height:1.45; }
 
@@ -103,8 +108,13 @@
     .fine { color: var(--muted); font-size: .84rem; margin-top: 10px; }
 
     .hidden { display:none; }
+    .message { display:none; border-radius:16px; padding:14px 16px; margin-bottom:16px; font-size:.95rem; line-height:1.5; }
+    .message.show { display:block; }
+    .message.error { background: var(--error-bg); color: var(--error); }
+    .message.success { background: var(--success-bg); color: var(--green-dark); }
+    .loading { opacity:.7; pointer-events:none; }
     @media (max-width: 720px) {
-      .grid.two, .grid.three, .summary-grid { grid-template-columns: 1fr; }
+      .grid.two, .summary-grid { grid-template-columns: 1fr; }
       .actions { flex-direction: column; }
       .btn, .btn.full { width: 100%; }
       .card { padding: 18px; }
@@ -130,6 +140,8 @@
     </section>
 
     <section class="card">
+      <div class="message error" id="formError"></div>
+      <div class="message success" id="formSuccess"></div>
       <form id="wizardForm">
         <div id="step1" class="step">
           <div class="step-label">Step 1 of 5</div>
@@ -173,6 +185,26 @@
                 <option>Multi-unit</option>
               </select>
             </div>
+            <div class="field">
+              <label><div><strong>Home age</strong></div></label>
+              <select name="homeAge" required>
+                <option value="">Select age</option>
+                <option>0-5 years</option>
+                <option>5-10 years</option>
+                <option>10-20 years</option>
+                <option>20-30 years</option>
+                <option>30+ years</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+            <div class="field">
+              <label><div><strong>Number of stories</strong></div></label>
+              <div class="grid">
+                <label class="radio"><input type="radio" name="stories" value="1 story" required><div><strong>1 story</strong></div></label>
+                <label class="radio"><input type="radio" name="stories" value="2 stories"><div><strong>2 stories</strong></div></label>
+                <label class="radio"><input type="radio" name="stories" value="3+ stories"><div><strong>3+ stories</strong></div></label>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -180,15 +212,59 @@
           <div class="step-label">Step 3 of 5</div>
           <div class="step-title">Your current system</div>
           <div class="grid two">
+            <div class="field" style="grid-column:1 / -1;">
+              <label><div><strong>Current system type</strong></div></label>
+              <div class="grid two">
+                <label class="radio"><input type="radio" name="systemType" value="Central AC + furnace" required><div><strong>Central AC + furnace</strong></div></label>
+                <label class="radio"><input type="radio" name="systemType" value="Heat pump"><div><strong>Heat pump</strong></div></label>
+                <label class="radio"><input type="radio" name="systemType" value="Mini-split"><div><strong>Mini-split</strong></div></label>
+                <label class="radio"><input type="radio" name="systemType" value="Window units"><div><strong>Window units</strong></div></label>
+                <label class="radio"><input type="radio" name="systemType" value="No system"><div><strong>No system</strong></div></label>
+                <label class="radio"><input type="radio" name="systemType" value="Not sure"><div><strong>Not sure</strong></div></label>
+              </div>
+            </div>
             <div class="field">
-              <label><div><strong>How old is your current system?</strong></div></label>
+              <label><div><strong>Current system age</strong></div></label>
               <select name="age" required>
                 <option value="">Select age</option>
-                <option>Less than 5 years</option>
-                <option>5–10 years</option>
-                <option>10–15 years</option>
-                <option>15+ years</option>
+                <option>Under 5yr</option>
+                <option>5-10yr</option>
+                <option>10-15yr</option>
+                <option>15-20yr</option>
+                <option>20+yr</option>
+                <option>Not sure</option>
+              </select>
+            </div>
+            <div class="field">
+              <label><div><strong>Current brand</strong></div></label>
+              <select name="currentBrand" required>
+                <option value="">Select brand</option>
+                <option>Carrier</option>
+                <option>Trane</option>
+                <option>Lennox</option>
+                <option>Rheem</option>
+                <option>Goodman</option>
+                <option>Daikin</option>
+                <option>Other</option>
                 <option>Don't know</option>
+              </select>
+            </div>
+            <div class="field">
+              <label><div><strong>Has ductwork</strong></div></label>
+              <div class="grid">
+                <label class="radio"><input type="radio" name="hasDuctwork" value="Yes" required><div><strong>Yes</strong></div></label>
+                <label class="radio"><input type="radio" name="hasDuctwork" value="No"><div><strong>No</strong></div></label>
+                <label class="radio"><input type="radio" name="hasDuctwork" value="Not sure"><div><strong>Not sure</strong></div></label>
+              </div>
+            </div>
+            <div class="field hidden" id="ductworkConditionField">
+              <label><div><strong>Ductwork condition</strong></div></label>
+              <select name="ductworkCondition" id="ductworkCondition">
+                <option value="">Select condition</option>
+                <option>Good</option>
+                <option>Fair</option>
+                <option>Poor</option>
+                <option>Not sure</option>
               </select>
             </div>
             <div class="field">
@@ -204,7 +280,44 @@
 
         <div id="step4" class="step hidden">
           <div class="step-label">Step 4 of 5</div>
-          <div class="step-title">Your contact info</div>
+          <div class="step-title">Issues and contact info</div>
+          <div class="section-title">Issues</div>
+          <div class="grid two">
+            <div class="field" style="grid-column:1 / -1;">
+              <label><div><strong>Current issues</strong><small>Select all that apply</small></div></label>
+              <div class="grid two">
+                <label class="radio"><input type="checkbox" name="currentIssues" value="System not cooling or heating at all"><div><strong>System not cooling or heating at all</strong></div></label>
+                <label class="radio"><input type="checkbox" name="currentIssues" value="Running but not reaching temperature"><div><strong>Running but not reaching temperature</strong></div></label>
+                <label class="radio"><input type="checkbox" name="currentIssues" value="Unusual noises"><div><strong>Unusual noises</strong></div></label>
+                <label class="radio"><input type="checkbox" name="currentIssues" value="High energy bills"><div><strong>High energy bills</strong></div></label>
+                <label class="radio"><input type="checkbox" name="currentIssues" value="Frequent cycling on and off"><div><strong>Frequent cycling on and off</strong></div></label>
+                <label class="radio"><input type="checkbox" name="currentIssues" value="Water or moisture around unit"><div><strong>Water or moisture around unit</strong></div></label>
+                <label class="radio"><input type="checkbox" name="currentIssues" value="Bad smells from vents"><div><strong>Bad smells from vents</strong></div></label>
+                <label class="radio"><input type="checkbox" name="currentIssues" value="Thermostat issues"><div><strong>Thermostat issues</strong></div></label>
+                <label class="radio"><input type="checkbox" name="currentIssues" value="No issues - planning replacement"><div><strong>No issues - planning replacement</strong></div></label>
+              </div>
+            </div>
+            <div class="field">
+              <label><div><strong>Hot or cold spots</strong></div></label>
+              <div class="grid">
+                <label class="radio"><input type="radio" name="hotColdSpots" value="Yes" required><div><strong>Yes</strong></div></label>
+                <label class="radio"><input type="radio" name="hotColdSpots" value="No"><div><strong>No</strong></div></label>
+              </div>
+            </div>
+            <div class="field">
+              <label><div><strong>Insulation</strong></div></label>
+              <div class="grid">
+                <label class="radio"><input type="radio" name="insulation" value="Well insulated" required><div><strong>Well insulated</strong></div></label>
+                <label class="radio"><input type="radio" name="insulation" value="Poorly insulated"><div><strong>Poorly insulated</strong></div></label>
+                <label class="radio"><input type="radio" name="insulation" value="Not sure"><div><strong>Not sure</strong></div></label>
+              </div>
+            </div>
+            <div class="field hidden" style="grid-column:1 / -1;" id="hotColdDetailsField">
+              <label><div><strong>Describe which rooms and what you experience</strong></div></label>
+              <textarea class="input" name="hotColdDetails" id="hotColdDetails" rows="4" placeholder="Upstairs bedrooms stay hot in the afternoon, and the back office is always colder than the rest of the house."></textarea>
+            </div>
+          </div>
+          <div class="section-title" style="margin-top:18px;">Your contact info</div>
           <div class="grid two">
             <div class="field"><label><div><strong>First name</strong></div></label><input class="input" name="first" placeholder="Mia" required /></div>
             <div class="field"><label><div><strong>Last name</strong></div></label><input class="input" name="last" placeholder="Johnson" required /></div>
@@ -215,16 +328,62 @@
         </div>
 
         <div id="step5" class="step hidden">
+          <div class="step-label">Step 5 of 5</div>
+          <div class="step-title">Preferences and review</div>
+          <div class="section-title">Preferences</div>
+          <div class="grid two">
+            <div class="field" style="grid-column:1 / -1;">
+              <label><div><strong>Preferred brands</strong></div></label>
+              <div class="grid two">
+                <label class="radio"><input type="checkbox" name="preferredBrands" value="Carrier"><div><strong>Carrier</strong></div></label>
+                <label class="radio"><input type="checkbox" name="preferredBrands" value="Trane"><div><strong>Trane</strong></div></label>
+                <label class="radio"><input type="checkbox" name="preferredBrands" value="Lennox"><div><strong>Lennox</strong></div></label>
+                <label class="radio"><input type="checkbox" name="preferredBrands" value="Rheem"><div><strong>Rheem</strong></div></label>
+                <label class="radio"><input type="checkbox" name="preferredBrands" value="Daikin"><div><strong>Daikin</strong></div></label>
+                <label class="radio"><input type="checkbox" name="preferredBrands" value="Goodman"><div><strong>Goodman</strong></div></label>
+                <label class="radio"><input type="checkbox" name="preferredBrands" value="No preference"><div><strong>No preference</strong></div></label>
+              </div>
+            </div>
+            <div class="field">
+              <label><div><strong>Budget range</strong></div></label>
+              <select name="budgetRange" required>
+                <option value="">Select budget</option>
+                <option>Under $5K</option>
+                <option>$5K-$10K</option>
+                <option>$10K-$15K</option>
+                <option>$15K+</option>
+                <option>Flexible</option>
+              </select>
+            </div>
+            <div class="field">
+              <label><div><strong>Financing interest</strong></div></label>
+              <div class="grid">
+                <label class="radio"><input type="radio" name="financingInterest" value="Yes" required><div><strong>Yes</strong></div></label>
+                <label class="radio"><input type="radio" name="financingInterest" value="No"><div><strong>No</strong></div></label>
+                <label class="radio"><input type="radio" name="financingInterest" value="Maybe"><div><strong>Maybe</strong></div></label>
+              </div>
+            </div>
+            <div class="field" style="grid-column:1 / -1;">
+              <label><div><strong>Additional services</strong></div></label>
+              <div class="grid two">
+                <label class="radio"><input type="checkbox" name="additionalServices" value="Smart thermostat"><div><strong>Smart thermostat</strong></div></label>
+                <label class="radio"><input type="checkbox" name="additionalServices" value="Air purification"><div><strong>Air purification</strong></div></label>
+                <label class="radio"><input type="checkbox" name="additionalServices" value="Duct cleaning"><div><strong>Duct cleaning</strong></div></label>
+                <label class="radio"><input type="checkbox" name="additionalServices" value="Maintenance plan"><div><strong>Maintenance plan</strong></div></label>
+                <label class="radio"><input type="checkbox" name="additionalServices" value="None"><div><strong>None</strong></div></label>
+              </div>
+            </div>
+          </div>
           <div class="confirm">
             <div class="check">✓</div>
-            <h2>You're matched! 3 contractors will contact you within 48 hours.</h2>
-            <p>Each contractor will submit a quote showing equipment, price, and timeline. You compare, no pressure.</p>
+            <h2>You're almost done.</h2>
+            <p>Review your request, then submit to get matched with up to 3 vetted contractors.</p>
           </div>
           <div class="summary">
             <div class="summary-grid" id="summaryGrid"></div>
           </div>
           <div class="actions" style="justify-content:center;">
-            <a class="btn btn-primary" href="index.html" style="background:var(--green);color:#fff;">Back to Home</a>
+            <button class="btn btn-primary" type="submit" id="submitBtn" style="background:var(--green);color:#fff;">Submit request</button>
           </div>
         </div>
 
@@ -246,11 +405,30 @@
     const form = document.getElementById('wizardForm');
     const multiBtn = document.getElementById('multiBtn');
     const needGrid = document.getElementById('needGrid');
+    const submitBtn = document.getElementById('submitBtn');
+    const ductworkConditionField = document.getElementById('ductworkConditionField');
+    const ductworkCondition = document.getElementById('ductworkCondition');
+    const hotColdDetailsField = document.getElementById('hotColdDetailsField');
+    const hotColdDetails = document.getElementById('hotColdDetails');
     let current = 0;
     let multiMode = false;
 
+    function setMessage(id, text) {
+      const el = document.getElementById(id);
+      if (!el) return;
+      el.textContent = text;
+      el.classList.add('show');
+    }
+
+    function clearMessages() {
+      document.querySelectorAll('.message').forEach(el => {
+        el.textContent = '';
+        el.classList.remove('show');
+      });
+    }
+
     const renderNeedOptions = () => {
-      const selected = Array.from(form.querySelectorAll('input[name="need"]:checked')).map(i => i.value);
+      const selected = Array.from(form.querySelectorAll('input[name="need"]:checked, input[name="needMulti"]:checked')).map(i => i.value);
       const options = [
         ['AC Installation','Install a new AC system.'],
         ['Furnace or Heat Pump','Replace or upgrade heating.'],
@@ -260,9 +438,9 @@
       ];
       needGrid.innerHTML = options.map(([value, desc]) => {
         const checked = selected.includes(value) ? 'checked' : '';
-        const type = multiMode ? 'checkbox' : 'radio';
-        const name = multiMode ? 'needMulti' : 'need';
-        const input = multiMode ? `<input type="checkbox" name="needMulti" value="${value}" ${checked}>` : `<input type="radio" name="need" value="${value}" ${checked}>`;
+        const input = multiMode
+          ? `<input type="checkbox" name="needMulti" value="${value}" ${checked}>`
+          : `<input type="radio" name="need" value="${value}" ${checked}>`;
         return `<label class="radio">${input}<div><strong>${value}</strong><span>${desc}</span></div></label>`;
       }).join('');
     };
@@ -274,11 +452,24 @@
       renderNeedOptions();
     });
 
+    const updateConditionalFields = () => {
+      const hasDuctwork = form.querySelector('input[name="hasDuctwork"]:checked')?.value;
+      const hasHotColdSpots = form.querySelector('input[name="hotColdSpots"]:checked')?.value;
+
+      ductworkConditionField.classList.toggle('hidden', hasDuctwork !== 'Yes');
+      ductworkCondition.required = hasDuctwork === 'Yes';
+      if (hasDuctwork !== 'Yes') ductworkCondition.value = '';
+
+      hotColdDetailsField.classList.toggle('hidden', hasHotColdSpots !== 'Yes');
+      hotColdDetails.required = hasHotColdSpots === 'Yes';
+      if (hasHotColdSpots !== 'Yes') hotColdDetails.value = '';
+    };
+
     const showStep = (idx) => {
       current = idx;
       steps.forEach((id, i) => document.getElementById(id).classList.toggle('hidden', i !== idx));
       progressBar.style.width = `${(idx + 1) * 20}%`;
-      progressText.textContent = idx < 4 ? `Step ${idx + 1} of 5` : 'Step 5 of 5';
+      progressText.textContent = `Step ${idx + 1} of 5`;
       backBtn.style.visibility = idx === 0 ? 'hidden' : 'visible';
       actions.style.display = idx === 4 ? 'none' : 'flex';
       if (idx === 4) renderSummary();
@@ -287,7 +478,7 @@
 
     const stepValidate = (idx) => {
       const stepEl = document.getElementById(steps[idx]);
-      const fields = Array.from(stepEl.querySelectorAll('input, select'));
+      const fields = Array.from(stepEl.querySelectorAll('input, select, textarea')).filter(el => !el.closest('.hidden'));
       if (idx === 0) {
         const singles = form.querySelectorAll('input[name="need"]:checked');
         const multis = form.querySelectorAll('input[name="needMulti"]:checked');
@@ -298,14 +489,27 @@
 
     const renderSummary = () => {
       const data = new FormData(form);
-      const selectedNeed = multiMode ? Array.from(form.querySelectorAll('input[name="needMulti"]:checked')).map(i => i.value).join(', ') : (data.get('need') || '—');
+      const selectedNeed = multiMode
+        ? Array.from(form.querySelectorAll('input[name="needMulti"]:checked')).map(i => i.value).join(', ')
+        : (data.get('need') || '—');
       const map = {
         need: 'What do you need?',
         address: 'Home address',
         size: 'Home size',
         type: 'Home type',
+        homeAge: 'Home age',
+        stories: 'Number of stories',
+        systemType: 'Current system type',
         age: 'Current system age',
+        currentBrand: 'Current brand',
+        hasDuctwork: 'Has ductwork',
+        ductworkCondition: 'Ductwork condition',
         emergency: 'Emergency?',
+        hotColdSpots: 'Hot or cold spots',
+        hotColdDetails: 'Hot/cold spot details',
+        insulation: 'Insulation',
+        budgetRange: 'Budget range',
+        financingInterest: 'Financing interest',
         first: 'First name',
         last: 'Last name',
         phone: 'Phone number',
@@ -316,10 +520,119 @@
         const value = key === 'need' ? selectedNeed : (data.get(key) || '—');
         items.push(`<div class="summary-item"><div class="k">${label}</div><div class="v">${value}</div></div>`);
       }
+      const currentIssues = data.getAll('currentIssues');
+      const preferredBrands = data.getAll('preferredBrands');
+      const additionalServices = data.getAll('additionalServices');
+      items.splice(15, 0,
+        `<div class="summary-item"><div class="k">Current issues</div><div class="v">${currentIssues.length ? currentIssues.join(', ') : '—'}</div></div>`,
+        `<div class="summary-item"><div class="k">Preferred brands</div><div class="v">${preferredBrands.length ? preferredBrands.join(', ') : '—'}</div></div>`,
+        `<div class="summary-item"><div class="k">Additional services</div><div class="v">${additionalServices.length ? additionalServices.join(', ') : '—'}</div></div>`
+      );
       document.getElementById('summaryGrid').innerHTML = items.join('');
     };
 
+    async function matchContractors(zipCode, serviceType) {
+      const { data, error } = await db
+        .from('contractors')
+        .select('id, total_jobs_won, service_zips, services, status')
+        .eq('status', 'approved')
+        .contains('service_zips', [zipCode])
+        .contains('services', [serviceType])
+        .order('total_jobs_won', { ascending: false })
+        .limit(3);
+
+      if (error) throw error;
+      return (data || []).map(c => c.id);
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      clearMessages();
+      if (current < 4) return;
+      form.classList.add('loading');
+      submitBtn.textContent = 'Submitting...';
+
+      try {
+        const user = await getCurrentUser();
+        if (!user) {
+          window.location.href = '/app/homeowner-auth.html';
+          return;
+        }
+
+        const data = new FormData(form);
+        const selectedNeeds = multiMode
+          ? Array.from(form.querySelectorAll('input[name="needMulti"]:checked')).map(i => i.value)
+          : [data.get('need')].filter(Boolean);
+
+        const serviceType = selectedNeeds[0] || '';
+        const address = (data.get('address') || '').toString().trim();
+        const zipMatch = address.match(/\b(\d{5})(?:-\d{4})?\b/);
+        const zipCode = zipMatch ? zipMatch[1] : '';
+        if (!zipCode) throw new Error('Please enter a full address including a 5-digit ZIP code.');
+
+        const emergency = (data.get('emergency') || '').toString();
+        const matchedContractors = await matchContractors(zipCode, serviceType);
+
+        const issuesCurrent = Array.from(form.querySelectorAll('input[name="currentIssues"]:checked')).map(i => i.value);
+        const preferredBrands = Array.from(form.querySelectorAll('input[name="preferredBrands"]:checked')).map(i => i.value);
+        const additionalServices = Array.from(form.querySelectorAll('input[name="additionalServices"]:checked')).map(i => i.value);
+        const hotColdSpots = (data.get('hotColdSpots') || '').toString();
+        const hasDuctworkRaw = (data.get('hasDuctwork') || '').toString();
+        const financingInterestRaw = (data.get('financingInterest') || '').toString();
+
+        const payload = {
+          homeowner_id: user.id,
+          status: 'open',
+          service_type: serviceType,
+          zip_code: zipCode,
+          address,
+          home_size_sqft: (data.get('size') || '').toString() || null,
+          home_type: (data.get('type') || '').toString() || null,
+          home_age: (data.get('homeAge') || '').toString() || null,
+          num_stories: (() => {
+            const stories = (data.get('stories') || '').toString();
+            if (!stories) return null;
+            if (stories === '1 story') return 1;
+            if (stories === '2 stories') return 2;
+            return 3;
+          })(),
+          current_system_brand: (data.get('currentBrand') || '').toString() || null,
+          current_system_age: (data.get('age') || '').toString() || null,
+          current_system_type: (data.get('systemType') || '').toString() || null,
+          has_ductwork: hasDuctworkRaw === 'Yes' ? true : hasDuctworkRaw === 'No' ? false : null,
+          ductwork_condition: (data.get('ductworkCondition') || '').toString() || null,
+          issues_current: issuesCurrent,
+          hot_cold_spots: hotColdSpots === 'Yes' ? true : hotColdSpots === 'No' ? false : null,
+          hot_cold_details: (data.get('hotColdDetails') || '').toString() || null,
+          insulation_known: (data.get('insulation') || '').toString() || null,
+          timeline: emergency === 'Yes — system is down' ? 'emergency' : 'planning',
+          preferred_brands: preferredBrands,
+          budget_range: (data.get('budgetRange') || '').toString() || null,
+          financing_interest: financingInterestRaw === 'Yes' ? true : financingInterestRaw === 'No' ? false : null,
+          additional_notes: additionalServices.length ? `Additional services: ${additionalServices.join(', ')}` : null,
+          photos_urls: [],
+          matched_contractors: matchedContractors,
+          urgency_flag: emergency === 'Yes — system is down'
+        };
+
+        const { error } = await db.from('leads').insert(payload);
+        if (error) throw error;
+
+        setMessage('formSuccess', 'Request submitted. Redirecting to your dashboard...');
+        submitBtn.textContent = 'Submitted';
+        window.location.href = '/app/homeowner-dashboard.html';
+      } catch (err) {
+        setMessage('formError', err.message || 'Could not submit your request. Please try again.');
+        submitBtn.textContent = 'Submit request';
+      } finally {
+        form.classList.remove('loading');
+      }
+    });
+
+    form.addEventListener('change', updateConditionalFields);
+
     nextBtn.addEventListener('click', () => {
+      clearMessages();
       if (!stepValidate(current)) {
         const active = document.querySelector(`#${steps[current]} input, #${steps[current]} select`);
         if (active) active.reportValidity();
@@ -329,11 +642,20 @@
     });
 
     backBtn.addEventListener('click', () => {
+      clearMessages();
       if (current > 0) showStep(current - 1);
     });
 
-    renderNeedOptions();
-    showStep(0);
+    (async function init() {
+      const user = await getCurrentUser();
+      if (!user) {
+        window.location.href = '/app/homeowner-auth.html';
+        return;
+      }
+      renderNeedOptions();
+      updateConditionalFields();
+      showStep(0);
+    })();
   </script>
 </body>
 </html>
